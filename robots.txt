@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aaronjimgil97-boop.github.io/cuanto-cuesta/sitemap.xml
