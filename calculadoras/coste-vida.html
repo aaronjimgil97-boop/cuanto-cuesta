@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta vivir en una ciudad? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste mensual de vivir en Madrid, Barcelona o Valencia según tu tipo de vivienda y estilo de vida.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <nav class="site-nav">
+        <a href="../index.html#vivienda">Vivienda</a>
+        <a href="../index.html#vehiculos">Vehículos</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <a class="breadcrumb" href="../index.html">← Volver al índice</a>
+      <h1>¿Cuánto cuesta vivir en una ciudad?</h1>
+      <p>Estimación mensual para una persona: alquiler, suministros, transporte y comida. Ajusta los datos a tu situación real.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="ciudad">Ciudad</label>
+        <select id="ciudad" name="ciudad">
+          <option value="madrid">Madrid</option>
+          <option value="barcelona">Barcelona</option>
+          <option value="valencia">Valencia</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="vivienda">Tipo de vivienda</label>
+        <select id="vivienda" name="vivienda">
+          <option value="compartido">Habitación en piso compartido</option>
+          <option value="individual" selected>Piso individual de 1 habitación</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="estilo">Estilo de vida</label>
+        <select id="estilo" name="estilo">
+          <option value="ajustado">Ajustado</option>
+          <option value="moderado" selected>Moderado</option>
+          <option value="alto">Alto</option>
+        </select>
+        <p class="field-hint">Afecta al gasto en ocio, comida fuera de casa y caprichos.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="transporte">¿Usas transporte público?</label>
+          <select id="transporte" name="transporte">
+            <option value="si" selected>Sí, abono mensual</option>
+            <option value="no">No, voy andando o en bici</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="gimnasio">¿Gimnasio?</label>
+          <select id="gimnasio" name="gimnasio">
+            <option value="no" selected>No</option>
+            <option value="si">Sí</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/coste-vida.js -->
+    </div>
+
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/coste-vida.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="../js/coste-vida.js"></script>
+</body>
+</html>

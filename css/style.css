@@ -1,0 +1,405 @@
+/* ============================================================
+   CUÁNTO CUESTA — sistema de diseño "libro de cuentas"
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* Color */
+  --paper: #efead9;
+  --paper-dark: #e2dbc3;
+  --paper-darker: #d5cbaa;
+  --ink: #23281f;
+  --ink-soft: #565c4d;
+  --stamp-blue: #2b4c7e;
+  --stamp-blue-dark: #1d3557;
+  --cash-green: #3f7d58;
+  --expense-red: #a63a2e;
+  --line: #b7ac88;
+
+  /* Type */
+  --font-display: 'Bitter', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --max-width: 960px;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    linear-gradient(var(--paper-darker) 1px, transparent 1px);
+  background-size: 100% 2.1rem;
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--stamp-blue); }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--stamp-blue);
+  outline-offset: 2px;
+}
+
+img { max-width: 100%; }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  border-bottom: 2px solid var(--ink);
+  padding: 1.1rem 0;
+  background: var(--paper);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.logo span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--stamp-blue);
+  border: 1px solid var(--stamp-blue);
+  padding: 0.05rem 0.35rem;
+  border-radius: var(--radius);
+  transform: translateY(-1px);
+}
+
+.site-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--ink-soft);
+  margin-left: 1.25rem;
+}
+
+.site-nav a:hover { color: var(--stamp-blue); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+.hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--stamp-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
+  margin: 0 0 1rem;
+  max-width: 18ch;
+}
+
+.hero p {
+  max-width: 52ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+/* ---------- Category / calculator index ---------- */
+
+.category {
+  padding: 2.5rem 0 1rem;
+}
+
+.category h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.category h2::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px dashed var(--line);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background: var(--paper-dark);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.card .tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--stamp-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.card.is-soon {
+  opacity: 0.55;
+  cursor: default;
+}
+.card.is-soon:hover { transform: none; box-shadow: none; }
+
+/* ---------- Calculator page ---------- */
+
+.calc-header {
+  padding: 2.25rem 0 1.5rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.calc-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  margin: 0 0 0.5rem;
+}
+
+.calc-header p {
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 0;
+}
+
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem 0 4rem;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .calc-layout { grid-template-columns: 1fr; }
+}
+
+/* Form */
+
+.field {
+  margin-bottom: 1.15rem;
+}
+
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.35rem;
+}
+
+.field select,
+.field input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field-hint {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 0.3rem;
+}
+
+/* ---------- Receipt (signature element) ---------- */
+
+.receipt {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  position: relative;
+  padding: 1.75rem 1.5rem 1.5rem;
+  font-family: var(--font-mono);
+}
+
+.receipt::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 10px;
+  background-image: radial-gradient(circle at 10px 0, transparent 6px, var(--paper) 6px);
+  background-size: 20px 10px;
+  background-repeat: repeat-x;
+  transform: translateY(-9px);
+}
+
+.receipt-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.receipt-title .stamp {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--cash-green);
+  border: 1px solid var(--cash-green);
+  border-radius: 20px;
+  padding: 0.15rem 0.55rem;
+  transform: rotate(-4deg);
+  display: inline-block;
+}
+
+.line-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  padding: 0.3rem 0;
+  color: var(--ink-soft);
+}
+
+.line-item span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.line-item .amount {
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.receipt-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 2px solid var(--ink);
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+}
+
+.receipt-total .label {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.receipt-total .value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--stamp-blue-dark);
+}
+
+.receipt-total .value.expense { color: var(--expense-red); }
+
+.receipt-note {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 2px solid var(--ink);
+  padding: 1.5rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
