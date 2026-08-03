@@ -26,7 +26,23 @@
   --max-width: 960px;
   --radius: 3px;
 }
-
+/* MODO OSCURO */
+[data-theme="oscuro"] {
+  --paper: #1d211b;
+  --paper-dark: #262b22;
+  --paper-darker: #33392c;
+  --ink: #eee8d6;
+  --muted: #a8ad9f;
+  --line: #50564a;
+  --accent: #d4a83f;
+  --accent-ink: #18140b;
+  --green: #8fb38a;
+  --green-bg: #263326;
+  --red: #d58b82;
+  --red-bg: #3a2422;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  color-scheme: dark;
+}
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
