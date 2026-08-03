@@ -419,3 +419,17 @@ img { max-width: 100%; }
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+.theme-toggle {
+  border: 1px solid var(--line);
+  background: var(--paper-dark);
+  color: var(--ink);
+  padding: 0.45rem 0.7rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--paper-darker);
+}
