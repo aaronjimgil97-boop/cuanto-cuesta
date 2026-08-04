@@ -466,3 +466,31 @@ img { max-width: 100%; }
 .card:focus-visible h3::after {
   transform: scaleX(1);
 }
+/* Efecto hover en la navegación */
+.site-nav a {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 100%;
+  height: 2px;
+  background: var(--stamp-blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--stamp-blue);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
