@@ -51,7 +51,7 @@
   <select id="zona" name="zona">
     <option value="centro">Centro</option>
     <option value="periferia_bien">Periferia bien comunicada</option>
-    <option value="periferia_poca">Periferia con poca comunicación</option>
+    <option value="periferia_mal">Periferia con poca comunicación</option>
   </select>
 </div>
   </div>
@@ -63,12 +63,29 @@
           <option value="valencia">Valencia</option>
         </select>
       </div>
+<div class="field">
+  <label>¿Pagas vivienda?</label>
+  <div class="toggle-group" role="group" aria-label="¿Pagas vivienda?">
+   <button type="button" id="vivienda-si" class="toggle-option active" data-value="si">
+  ✓ Sí
+</button>
 
-      <div class="field">
+<button type="button" id="vivienda-no" class="toggle-option" data-value="no">
+  No
+</button>
+  </div>
+</div>
+      <div class="field" id="vivienda-field">
         <label for="vivienda">Tipo de vivienda</label>
         <select id="vivienda" name="vivienda">
           <option value="compartido">Habitación en piso compartido</option>
           <option value="individual" selected>Piso individual de 1 habitación</option>
+          <option value="piso_2">Piso de 2 habitaciones</option>
+         <option value="piso_3">Piso de 3 habitaciones</option>
+         <option value="piso_4">Piso de 4 habitaciones</option>
+         <option value="casa_2">Casa de 2 habitaciones</option>
+         <option value="casa_3">Casa de 3 habitaciones</option>
+         <option value="casa_4">Casa de 4 habitaciones</option>
         </select>
       </div>
 
@@ -91,11 +108,16 @@
           </select>
         </div>
         <div class="field">
-          <label for="gimnasio">¿Gimnasio?</label>
-          <select id="gimnasio" name="gimnasio">
-            <option value="no" selected>No</option>
-            <option value="si">Sí</option>
-          </select>
+          <label>¿Gimnasio?</label>
+       <div class="toggle-group gimnasio-toggle">
+    <button type="button" class="toggle-option active" data-value="no">
+      No
+    </button>
+    <button type="button" class="toggle-option" data-value="si">
+      Sí
+    </button>
+  </div>
+</div>
         </div>
       </div>
     </form>
