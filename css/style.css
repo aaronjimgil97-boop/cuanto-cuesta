@@ -515,4 +515,32 @@ img { max-width: 100%; }
 .hero-cta:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}/* ---------- Toggle Sí / No ---------- */
+
+.toggle-group {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.toggle-option {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-option.active {
+  background: var(--cash-green);
+  border-color: var(--cash-green);
+  color: var(--paper);
+}
+
+.toggle-option:hover {
+  border-color: var(--stamp-blue);
+  color: var(--stamp-blue);
 }
