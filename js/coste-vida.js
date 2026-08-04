@@ -109,3 +109,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("calc-form").addEventListener("input", calcular);
   calcular();
 });
+// Cargar provincias desde geo-datos.js
+const provinciaSelect = document.getElementById("provincia");
+
+if (provinciaSelect && typeof PROVINCIAS !== "undefined") {
+  Object.entries(PROVINCIAS).forEach(([codigo, provincia]) => {
+    const option = document.createElement("option");
+    option.value = codigo;
+    option.textContent = provincia.nombre;
+    provinciaSelect.appendChild(option);
+  });
+}
