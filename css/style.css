@@ -41,6 +41,7 @@
   --red: #d58b82;
   --red-bg: #3a2422;
   --card-shadow: rgba(0, 0, 0, 0.3);
+  --stamp-blue: #6fa8ff;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -432,4 +433,36 @@ img { max-width: 100%; }
 
 .theme-toggle:hover {
   background: var(--paper-darker);
+}
+.site-header .theme-toggle {
+  margin-left: 0.5rem;
+}
+/* Efecto hover en títulos de las tarjetas */
+.card h3 {
+  position: relative;
+  display: inline-block;
+  transition: color 0.25s ease;
+}
+
+.card h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15rem;
+  width: 100%;
+  height: 2px;
+  background: var(--stamp-blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover h3,
+.card:focus-visible h3 {
+  color: var(--stamp-blue);
+}
+
+.card:hover h3::after,
+.card:focus-visible h3::after {
+  transform: scaleX(1);
 }
