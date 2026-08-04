@@ -494,3 +494,25 @@ img { max-width: 100%; }
 .site-nav a:focus-visible::after {
   transform: scaleX(1);
 }
+/* Botón principal del hero */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--stamp-blue);
+  color: var(--paper);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
