@@ -37,6 +37,18 @@ const ESTILO_MULT = {
   alto: 1.5,
 };
 
+// NUEVO: multiplicadores según tipo de vivienda
+const VIVIENDA_MULT = {
+  compartido: 0.55,
+  individual: 1.00,
+  piso_1: 1.00,
+  piso_2: 1.25,
+  piso_3: 1.50,
+  piso_4: 1.80,
+  casa_2: 1.40,
+  casa_3: 1.70,
+  casa_4: 2.00,
+};
 const OCIO_BASE = 150; // € /mes en estilo "moderado"
 
 function euros(n) {
@@ -50,23 +62,63 @@ function leerParametros() {
 
 function calcular() {
   const ciudadId = document.getElementById("ciudad").value;
+  const pagaVivienda = document.querySelector('.toggle-option[data-value="si"]').classList.contains("active");
+    const provinciaId = document.getElementById("provincia").value;
+  const municipioNombre = document.getElementById("municipio").value;
+    const municipios = MUNICIPIOS[provinciaId] || [];
+  const municipio = municipios.find((item) => item.n === municipioNombre);
+    const provincia = PROVINCIAS[provinciaId];
+  const tier = provincia ? provincia.tier : null;
+  const base = tier ? TIER_BASE[tier] : null;
+  const tamanoMult = municipio ? (TAMANO_MULT[municipio.t] || 1) : 1;
+    const zonaId = document.getElementById("zona").value;
+  const zona = ZONA[zonaId] || ZONA.centro;
   const viviendaTipo = document.getElementById("vivienda").value;
   const estilo = document.getElementById("estilo").value;
   const transporte = document.getElementById("transporte").value === "si";
-  const gimnasio = document.getElementById("gimnasio").value === "si";
+ const gimnasio = document.querySelector(
+  '.gimnasio-toggle .toggle-option.active'
+).dataset.value === "si";
 
   const ciudad = CIUDADES[ciudadId];
   const mult = ESTILO_MULT[estilo];
 
   const items = [
-    { nombre: "Alquiler", valor: ciudad.alquiler[viviendaTipo] },
-    { nombre: "Suministros (luz, agua, internet)", valor: ciudad.suministros },
-    { nombre: "Comida", valor: Math.round(ciudad.comida * mult) },
+   {
+  nombre: "Suministros (luz, agua, internet)",
+  valor: Math.round(base.suministros * tamanoMult),
+},
+    {
+  nombre: "Comida",
+  valor: Math.round(base.comida * tamanoMult * mult),
+},
     { nombre: "Ocio y salidas", valor: Math.round(OCIO_BASE * mult) },
   ];
+if (pagaVivienda) {
+  const alquiler = Math.round(
+    base.alquiler *
+    tamanoMult *
+    zona.alquiler *
+    VIVIENDA_MULT[viviendaTipo]
+  );
 
-  if (transporte) items.push({ nombre: "Transporte público", valor: ciudad.transporte });
-  if (gimnasio) items.push({ nombre: "Gimnasio", valor: ciudad.gimnasio });
+  items.unshift({
+    nombre: "Alquiler",
+    valor: alquiler,
+  });
+} 
+ if (transporte) {
+  items.push({
+    nombre: "Transporte público",
+    valor: Math.round(base.transporte * tamanoMult * zona.transporte),
+  });
+}
+  if (gimnasio) {
+  items.push({
+    nombre: "Gimnasio",
+    valor: Math.round(base.gimnasio * tamanoMult),
+  });
+}
 
   const total = items.reduce((sum, item) => sum + item.valor, 0);
 
@@ -101,12 +153,51 @@ function pintarRecibo(nombreCiudad, items, total) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const { ciudad } = leerParametros();
-  if (ciudad && CIUDADES[ciudad]) {
-    document.getElementById("ciudad").value = ciudad;
-  }
+  // BOTONES DE VIVIENDA
+const viviendaToggles = document.querySelectorAll(
+  '#vivienda-si, #vivienda-no'
+);
 
+  const viviendaField = document.getElementById("vivienda-field");
+
+  viviendaToggles.forEach((button) => {
+    button.addEventListener("click", () => {
+      viviendaToggles.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      const pagaVivienda = button.dataset.value === "si";
+
+      viviendaField.style.display = pagaVivienda ? "" : "none";
+
+      calcular();
+    });
+  });
+
+
+  // BOTONES DE GIMNASIO
+  const gimnasioToggles = document.querySelectorAll(
+    '.gimnasio-toggle .toggle-option[data-value]'
+  );
+
+  gimnasioToggles.forEach((button) => {
+    button.addEventListener("click", () => {
+      gimnasioToggles.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      calcular();
+    });
+  });
+
+
+  // CALCULADORA
   document.getElementById("calc-form").addEventListener("input", calcular);
+
   calcular();
 });
 // Cargar provincias y municipios desde geo-datos.js
