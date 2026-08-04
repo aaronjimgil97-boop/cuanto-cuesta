@@ -109,14 +109,50 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("calc-form").addEventListener("input", calcular);
   calcular();
 });
-// Cargar provincias desde geo-datos.js
+// Cargar provincias y municipios desde geo-datos.js
 const provinciaSelect = document.getElementById("provincia");
+const municipioSelect = document.getElementById("municipio");
 
-if (provinciaSelect && typeof PROVINCIAS !== "undefined") {
+if (
+  provinciaSelect &&
+  municipioSelect &&
+  typeof PROVINCIAS !== "undefined" &&
+  typeof MUNICIPIOS !== "undefined"
+) {
+  // Cargar provincias
   Object.entries(PROVINCIAS).forEach(([codigo, provincia]) => {
     const option = document.createElement("option");
     option.value = codigo;
     option.textContent = provincia.nombre;
     provinciaSelect.appendChild(option);
+  });
+
+  // Cambiar municipios al seleccionar provincia
+  provinciaSelect.addEventListener("change", () => {
+    const codigoProvincia = provinciaSelect.value;
+
+    municipioSelect.innerHTML = "";
+
+    if (!codigoProvincia) {
+      municipioSelect.disabled = true;
+
+      const option = document.createElement("option");
+      option.value = "";
+      option.textContent = "Selecciona primero una provincia";
+      municipioSelect.appendChild(option);
+
+      return;
+    }
+
+    const municipios = MUNICIPIOS[codigoProvincia] || [];
+
+    municipios.forEach((municipio) => {
+      const option = document.createElement("option");
+      option.value = municipio.n;
+      option.textContent = municipio.n;
+      municipioSelect.appendChild(option);
+    });
+
+    municipioSelect.disabled = municipios.length === 0;
   });
 }
