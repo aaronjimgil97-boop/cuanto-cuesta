@@ -61,7 +61,6 @@ function leerParametros() {
 }
 
 function calcular() {
-  const ciudadId = document.getElementById("ciudad").value;
   const pagaVivienda = document.querySelector('.toggle-option[data-value="si"]').classList.contains("active");
     const provinciaId = document.getElementById("provincia").value;
   const municipioNombre = document.getElementById("municipio").value;
@@ -80,7 +79,6 @@ function calcular() {
   '.gimnasio-toggle .toggle-option.active'
 ).dataset.value === "si";
 
-  const ciudad = CIUDADES[ciudadId];
   const mult = ESTILO_MULT[estilo];
 
   const items = [
@@ -121,8 +119,8 @@ if (pagaVivienda) {
 }
 
   const total = items.reduce((sum, item) => sum + item.valor, 0);
-
-  pintarRecibo(ciudad.nombre, items, total);
+console.log("Municipio:", municipioNombre);
+  pintarRecibo(municipioNombre, items, total);
 }
 
 function pintarRecibo(nombreCiudad, items, total) {
@@ -245,5 +243,10 @@ if (
     });
 
     municipioSelect.disabled = municipios.length === 0;
+   if (municipios.length > 0) {
+  municipioSelect.value = municipios[0].n;
+}
+
+calcular();
   });
 }
