@@ -90,14 +90,40 @@
         <p class="field-hint">Afecta al gasto en ocio, comida fuera de casa y caprichos.</p>
       </div>
 
-      <div class="field-row">
-        <div class="field">
-          <label for="transporte">¿Usas transporte público?</label>
-          <select id="transporte" name="transporte">
-            <option value="si" selected>Sí, abono mensual</option>
-            <option value="no">No, voy andando o en bici</option>
-          </select>
-        </div>
+      <div class="field">
+  <label>¿Cómo te desplazas?</label>
+
+  <div class="toggle-group transporte-toggle" role="group" aria-label="¿Cómo te desplazas?">
+    <button type="button" class="toggle-option active" data-value="ninguno">
+      No
+    </button>
+
+    <button type="button" class="toggle-option" data-value="publico">
+      Transporte público
+    </button>
+
+    <button type="button" class="toggle-option" data-value="privado">
+      Transporte privado
+    </button>
+  </div>
+</div>
+<div class="field" id="vehiculo-field" style="display: none;">
+  <label>¿Qué vehículo utilizas?</label>
+
+  <div class="toggle-group vehiculo-toggle" role="group" aria-label="¿Qué vehículo utilizas?">
+    <button type="button" class="toggle-option active" data-value="coche">
+      🚗 Coche
+    </button>
+
+    <button type="button" class="toggle-option" data-value="moto">
+      🏍️ Moto
+    </button>
+
+    <button type="button" class="toggle-option" data-value="furgoneta">
+      🚐 Furgoneta
+    </button>
+  </div>
+</div>
         <div class="field">
           <label>¿Gimnasio?</label>
        <div class="toggle-group gimnasio-toggle">
