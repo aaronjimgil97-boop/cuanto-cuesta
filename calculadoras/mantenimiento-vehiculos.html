@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta mantener un coche? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste mensual de mantener un BMW Serie 3, un Audi A4 u otro coche: seguro, ITV, revisiones, neumáticos y combustible.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <nav class="site-nav">
+        <a href="../index.html#vivienda">Vivienda</a>
+        <a href="../index.html#vehiculos">Vehículos</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <a class="breadcrumb" href="../index.html">← Volver al índice</a>
+      <h1>¿Cuánto cuesta mantener un coche?</h1>
+      <p>Estimación mensual: seguro, impuesto de circulación, ITV, revisiones, neumáticos y combustible según tu uso.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="modelo">Modelo</label>
+        <select id="modelo" name="modelo">
+          <option value="bmw-serie-3">BMW Serie 3</option>
+          <option value="audi-a4">Audi A4</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="antiguedad">Antigüedad del coche</label>
+        <select id="antiguedad" name="antiguedad">
+          <option value="nuevo">Nuevo / hasta 3 años</option>
+          <option value="usado" selected>Entre 3 y 8 años</option>
+          <option value="viejo">Más de 8 años</option>
+        </select>
+        <p class="field-hint">Afecta al seguro, a las revisiones y a la probabilidad de averías.</p>
+      </div>
+
+      <div class="field">
+        <label for="km">Kilómetros al año</label>
+        <select id="km" name="km">
+          <option value="8000">Hasta 8.000 km</option>
+          <option value="15000" selected>Entre 8.000 y 15.000 km</option>
+          <option value="25000">Más de 15.000 km</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="combustible">Combustible</label>
+        <select id="combustible" name="combustible">
+          <option value="gasolina" selected>Gasolina</option>
+          <option value="diesel">Diésel</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="parking">¿Plaza de garaje de pago?</label>
+        <select id="parking" name="parking">
+          <option value="no" selected>No</option>
+          <option value="si">Sí</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/mantenimiento-coche.js -->
+    </div>
+
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/mantenimiento-coche.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="../js/mantenimiento-coche.js"></script>
+</body>
+</html>
