@@ -82,6 +82,9 @@ function leerParametros() {
 
 function calcular() {
   const pagaVivienda = document.querySelector('.toggle-option[data-value="si"]').classList.contains("active");
+  const pagaSuministros = document.querySelector(
+  '.suministros-toggle .toggle-option.active'
+)?.dataset.value === "si";
     const provinciaId = document.getElementById("provincia").value;
   const municipioNombre = document.getElementById("municipio").value;
     const municipios = MUNICIPIOS[provinciaId] || [];
@@ -106,17 +109,23 @@ const vehiculo = document.querySelector(
 
   const mult = ESTILO_MULT[estilo];
 
-  const items = [
-   {
-  nombre: "Suministros (luz, agua, internet)",
-  valor: Math.round(base.suministros * tamanoMult),
-},
-    {
-  nombre: "Comida",
-  valor: Math.round(base.comida * tamanoMult * mult),
-},
-    { nombre: "Ocio y salidas", valor: Math.round(OCIO_BASE * mult) },
-  ];
+const items = [
+  {
+    nombre: "Comida",
+    valor: Math.round(base.comida * tamanoMult * mult),
+  },
+  {
+    nombre: "Ocio y salidas",
+    valor: Math.round(OCIO_BASE * mult),
+  },
+];
+
+if (pagaSuministros) {
+  items.unshift({
+    nombre: "Suministros (luz, agua, internet)",
+    valor: Math.round(base.suministros * tamanoMult),
+  });
+}
 if (pagaVivienda) {
   const alquiler = Math.round(
     base.alquiler *
@@ -166,15 +175,27 @@ console.log("Municipio:", municipioNombre);
 function pintarRecibo(nombreCiudad, items, total) {
   const receipt = document.getElementById("receipt");
 
-  const filas = items
-    .map(
-      (item) => `
+const filas = items
+  .map(
+    (item) => `
       <div class="line-item">
         <span>${item.nombre}</span>
         <span class="amount">${euros(item.valor)}</span>
-      </div>`
-    )
-    .join("");
+      </div>
+      ${
+        item.nombre.startsWith("Transporte privado")
+          ? `
+            <div class="vehicle-calculator-link">
+            <a href="mantenimiento-vehiculos.html">
+  Calcular mantenimiento del vehículo →
+</a>
+            </div>
+          `
+          : ""
+      }
+    `
+  )
+  .join("");
 
   receipt.innerHTML = `
     <div class="receipt-title">
@@ -214,7 +235,22 @@ const viviendaToggles = document.querySelectorAll(
     });
   });
 
+// BOTONES DE SUMINISTROS
+const suministrosToggles = document.querySelectorAll(
+  '#suministros-si, #suministros-no'
+);
 
+suministrosToggles.forEach((button) => {
+  button.addEventListener("click", () => {
+    suministrosToggles.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    calcular();
+  });
+});
   // BOTONES DE GIMNASIO
   const gimnasioToggles = document.querySelectorAll(
     '.gimnasio-toggle .toggle-option[data-value]'
