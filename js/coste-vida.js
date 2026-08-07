@@ -36,6 +36,26 @@ const ESTILO_MULT = {
   moderado: 1,
   alto: 1.5,
 };
+const VEHICULO_BASE = {
+  coche: {
+    fijo: 135,
+    combustible: 80,
+  },
+  moto: {
+    fijo: 65,
+    combustible: 50,
+  },
+  furgoneta: {
+    fijo: 165,
+    combustible: 105,
+  },
+};
+
+const VEHICULO_ZONA_MULT = {
+  centro: 0.75,
+  periferia_bien: 1.00,
+  periferia_mal: 1.25,
+};
 
 // NUEVO: multiplicadores según tipo de vivienda
 const VIVIENDA_MULT = {
@@ -74,7 +94,12 @@ function calcular() {
   const zona = ZONA[zonaId] || ZONA.centro;
   const viviendaTipo = document.getElementById("vivienda").value;
   const estilo = document.getElementById("estilo").value;
-  const transporte = document.getElementById("transporte").value === "si";
+const transporte = document.querySelector(
+  ".transporte-toggle .toggle-option.active"
+)?.dataset.value || "ninguno";
+const vehiculo = document.querySelector(
+  ".vehiculo-toggle .toggle-option.active"
+)?.dataset.value || "coche";
  const gimnasio = document.querySelector(
   '.gimnasio-toggle .toggle-option.active'
 ).dataset.value === "si";
@@ -105,11 +130,26 @@ if (pagaVivienda) {
     valor: alquiler,
   });
 } 
- if (transporte) {
+if (transporte === "publico") {
   items.push({
     nombre: "Transporte público",
     valor: Math.round(base.transporte * tamanoMult * zona.transporte),
   });
+}
+if (transporte === "privado") {
+  const vehiculoCosto = VEHICULO_BASE[vehiculo];
+  const zonaVehiculoMult = VEHICULO_ZONA_MULT[zonaId] || 1;
+
+  if (vehiculoCosto) {
+    items.push({
+nombre: `Transporte privado (${vehiculo})`,
+      valor: Math.round(
+        (vehiculoCosto.fijo + vehiculoCosto.combustible) *
+        tamanoMult *
+        zonaVehiculoMult
+      ),
+    });
+  }
 }
   if (gimnasio) {
   items.push({
@@ -192,7 +232,39 @@ const viviendaToggles = document.querySelectorAll(
     });
   });
 
+const vehiculoField = document.getElementById("vehiculo-field");
+const transporteToggles = document.querySelectorAll(
+  ".transporte-toggle .toggle-option"
+);
 
+transporteToggles.forEach((button) => {
+  button.addEventListener("click", () => {
+    transporteToggles.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    const esPrivado = button.dataset.value === "privado";
+vehiculoField.style.display = esPrivado ? "" : "none";
+
+    calcular();
+  });
+});
+const vehiculoToggles = document.querySelectorAll(
+  ".vehiculo-toggle .toggle-option"
+);
+
+vehiculoToggles.forEach((button) => {
+  button.addEventListener("click", () => {
+    vehiculoToggles.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    calcular();
+  });
+});
   // CALCULADORA
   document.getElementById("calc-form").addEventListener("input", calcular);
 
