@@ -358,3 +358,85 @@ if (
 calcular();
   });
 }
+
+// ============================================================
+// MAPA DE ESPAÑA
+// ============================================================
+
+function cargarMapaEspana() {
+  console.log("MAPA: función ejecutada");
+  const contenedor = document.getElementById("mapa-espana");
+
+  if (!contenedor) {
+    console.warn("No existe #mapa-espana");
+    return;
+  }
+
+  fetch("../datos/spain-provinces.geojson")
+    .then((respuesta) => {
+      if (!respuesta.ok) {
+        throw new Error("No se pudo cargar el GeoJSON");
+      }
+
+      return respuesta.json();
+    })
+    .then((geojson) => {
+      const ancho = 520;
+      const alto = 430;
+
+      const svg = d3
+        .select("#mapa-espana")
+        .append("svg")
+        .attr("viewBox", `0 0 ${ancho} ${alto}`)
+        .attr("width", "100%")
+        .attr("height", "auto")
+        .attr("role", "img")
+        .attr("aria-label", "Mapa de España por provincias");
+
+      const proyeccion = d3
+        .geoMercator()
+        .fitSize([ancho, alto], geojson);
+
+      const path = d3.geoPath().projection(proyeccion);
+
+      svg
+        .selectAll("path")
+        .data(geojson.features)
+        .join("path")
+        .attr("d", path)
+        .attr("class", "provincia-mapa")
+        .on("mouseenter", function () {
+  d3.select(this).classed("provincia-hover", true);
+})
+.on("mouseleave", function () {
+  d3.select(this).classed("provincia-hover", false);
+})
+.on("click", function (event, d) {
+  const codigoProvincia = d.properties.cod_prov;
+
+  if (!codigoProvincia) {
+    console.warn("La provincia no tiene código:", d.properties);
+    return;
+  }
+
+  provinciaSelect.value = codigoProvincia;
+
+  // Disparamos el mismo cambio que si la seleccionáramos manualmente
+  provinciaSelect.dispatchEvent(new Event("change"));
+
+  // Marcar visualmente la provincia seleccionada
+  d3.selectAll(".provincia-mapa")
+    .classed("provincia-seleccionada", false);
+
+  d3.select(this)
+    .classed("provincia-seleccionada", true);
+});
+    })
+    .catch((error) => {
+      console.error("Error cargando el mapa:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  cargarMapaEspana();
+});
