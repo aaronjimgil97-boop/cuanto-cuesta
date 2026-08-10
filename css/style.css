@@ -544,3 +544,31 @@ img { max-width: 100%; }
   border-color: var(--stamp-blue);
   color: var(--stamp-blue);
 }
+/* ============================================================
+   MAPA DE ESPAÑA
+   ============================================================ */
+
+#mapa-espana {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+
+#mapa-espana svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.provincia-mapa {
+  fill: #e8e1c9;
+  stroke: #6f6a5c;
+  stroke-width: 0.8;
+}
+.provincia-hover {
+  fill: #8f9f7a;
+  cursor: pointer;
+}
+.provincia-seleccionada {
+  fill: #8f9f7a;
+}
