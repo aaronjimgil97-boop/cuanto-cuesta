@@ -398,6 +398,14 @@ function cargarMapaEspana() {
         .fitSize([ancho, alto], geojson);
 
       const path = d3.geoPath().projection(proyeccion);
+      svg
+  .append("rect")
+  .attr("x", 145)
+  .attr("y", 15)
+  .attr("width", 130)
+  .attr("height", 75)
+  .attr("rx", 8)
+  .attr("class", "canarias-recuadro");
 
       svg
         .selectAll("path")
@@ -405,6 +413,25 @@ function cargarMapaEspana() {
         .join("path")
         .attr("d", path)
         .attr("class", "provincia-mapa")
+        .each(function (d) {
+  const nombre = (
+    d.properties.name ||
+    d.properties.NAME ||
+    d.properties.provincia ||
+    ""
+  ).toLowerCase();
+
+  d.esCanarias =
+    nombre.includes("las palmas") ||
+    nombre.includes("santa cruz de tenerife");
+})
+  .attr("transform", function (d) {
+    if (d.esCanarias) {
+      return "translate(170,-35) scale(0.65)";
+    }
+
+    return null;
+  })
         .on("mouseenter", function () {
   d3.select(this).classed("provincia-hover", true);
 })
