@@ -400,11 +400,11 @@ function cargarMapaEspana() {
       const path = d3.geoPath().projection(proyeccion);
       svg
   .append("rect")
-  .attr("x", 145)
-  .attr("y", 15)
-  .attr("width", 130)
-  .attr("height", 75)
-  .attr("rx", 8)
+.attr("x", 170)
+.attr("y", 200)
+.attr("width", 90)
+.attr("height", 50)
+  .attr("rx", 6)
   .attr("class", "canarias-recuadro");
 
       svg
