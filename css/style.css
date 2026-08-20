@@ -563,7 +563,7 @@ img { max-width: 100%; }
 
 #mapa-espana {
   width: 100%;
-  max-width: 900px;
+  max-width:600px;
   margin: 0 auto 20px;
   padding: 14px;
   box-sizing: border-box;
@@ -603,4 +603,10 @@ img { max-width: 100%; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px;
+}
+
+.canarias-recuadro {
+  fill: transparent;
+  stroke: #8f9f7a;
+  stroke-width: 1.5;
 }
