@@ -263,7 +263,7 @@ img { max-width: 100%; }
 
 .calc-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.9fr 1.1fr;
   gap: 2.5rem;
   padding: 2.5rem 0 4rem;
   align-items: start;
@@ -314,6 +314,9 @@ img { max-width: 100%; }
 /* ---------- Receipt (signature element) ---------- */
 
 .receipt {
+    width: 100%;
+      min-width: 0;
+  box-sizing: border-box;
   background: var(--paper);
   border: 1px solid var(--ink);
   border-radius: var(--radius);
@@ -612,7 +615,7 @@ position: relative;
 }
 .vivienda-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: 1.5fr 1.0fr;
   gap: 40px;
 }
 
