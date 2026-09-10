@@ -561,6 +561,16 @@ img { max-width: 100%; }
   margin-bottom: 12px;
 }
 
+.mapa-vivienda h3 {
+  width: 950px;
+  max-width: 100%;
+  margin: 0 auto 12px;
+}
+.mapa-ayuda {
+  width: 950px;
+  max-width: 100%;
+  margin: 0 auto;
+}
 #mapa-espana {
   width: 100%;
   max-width:600px;
