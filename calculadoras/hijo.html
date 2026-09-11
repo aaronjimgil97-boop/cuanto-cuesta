@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta un hijo? Niño, adolescente o universidad — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste mensual de un hijo según la etapa: niño, adolescente o universidad, con colegio público, concertado o privado, extraescolares y campamentos.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">🎒</span>
+      <h1>¿Cuánto cuesta un hijo según la etapa?</h1>
+      <p>De niño a universitario, el gasto cambia mucho según el tipo de centro, las extraescolares y el alojamiento. Elige la etapa para ver la estimación mensual.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="etapa">Etapa</label>
+        <select id="etapa" name="etapa">
+          <option value="nino" selected>Niño (3-12 años)</option>
+          <option value="adolescente">Adolescente (13-17 años)</option>
+          <option value="universidad">Universidad</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="centro" id="label-centro">Tipo de colegio</label>
+        <select id="centro" name="centro">
+          <option value="publico" selected>Público</option>
+          <option value="concertado">Concertado</option>
+          <option value="privado">Privado</option>
+        </select>
+        <p class="field-hint" id="hint-centro">Incluye la mensualidad y el material escolar.</p>
+      </div>
+
+      <div class="field" id="campo-extraescolares">
+        <label for="extraescolares">Extraescolares</label>
+        <select id="extraescolares" name="extraescolares">
+          <option value="ninguna">Ninguna</option>
+          <option value="algunas" selected>Una o dos actividades</option>
+          <option value="muchas">Varias actividades</option>
+        </select>
+      </div>
+
+      <div class="field" id="campo-comedor">
+        <label for="comedor">¿Usa comedor escolar?</label>
+        <select id="comedor" name="comedor">
+          <option value="si" selected>Sí</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="field" id="campo-alojamiento" style="display:none">
+        <label for="alojamiento">Alojamiento</label>
+        <select id="alojamiento" name="alojamiento">
+          <option value="casa" selected>En casa familiar</option>
+          <option value="compartido">Piso compartido</option>
+          <option value="colegioMayor">Colegio mayor / residencia</option>
+        </select>
+      </div>
+
+      <div class="field" id="campo-campamento">
+        <label for="campamento">¿Campamento de verano?</label>
+        <select id="campamento" name="campamento">
+          <option value="no" selected>No</option>
+          <option value="si">Sí</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/hijo.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta un hijo según la edad?</h2>
+    <p>El gasto de un hijo cambia de forma notable con la edad. En la etapa de colegio, la decisión que más pesa en el presupuesto es el tipo de centro: la educación pública no tiene coste de matrícula (aunque sí material y comedor), la concertada añade una cuota mensual moderada, y la privada puede multiplicar el gasto varias veces. A partir de ahí, las extraescolares, la ropa (que hay que renovar más a menudo en la adolescencia) y el ocio van sumando.</p>
+    <p>En la universidad el panorama cambia: la matrícula pública en España es más barata que en muchos países, pero si el hijo se traslada de ciudad, el alojamiento (piso compartido o colegio mayor) suele ser la partida más grande del presupuesto, muy por encima de las tasas académicas.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué la universidad puede salir más barata que el colegio privado?</summary>
+      <p>Las tasas de una universidad pública española son bajas en comparación con un colegio privado de pago mensual. El coste se dispara sobre todo si hay que pagar alojamiento fuera de casa, no tanto por la matrícula en sí.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué gasto tiene más margen de ajuste?</summary>
+      <p>Las extraescolares y el tipo de centro son las dos decisiones que más cambian el total. El comedor y la ropa varían menos entre familias.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="bebe.html">👶 Coste de un bebé</a>
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/hijo-datos.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/hijo-datos.js"></script>
+  <script src="../js/hijo.js"></script>
+</body>
+</html>

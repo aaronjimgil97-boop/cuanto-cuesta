@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gasolina vs. eléctrico: comparador de coste mensual — Cuánto Cuesta</title>
+  <meta name="description" content="Compara el gasto mensual real de un coche de gasolina frente a uno eléctrico: combustible o recarga, seguro, mantenimiento e impuesto.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">⚡</span>
+      <h1>Gasolina vs. eléctrico</h1>
+      <p>Compara el gasto mensual de un coche de combustión frente a uno eléctrico de un segmento equivalente, según tu kilometraje y dónde recargues.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="km">Kilómetros al año</label>
+        <select id="km" name="km">
+          <option value="8000">Hasta 8.000 km</option>
+          <option value="15000" selected>Entre 8.000 y 15.000 km</option>
+          <option value="25000">Más de 15.000 km</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="consumoGasolina">Consumo gasolina/diésel (l/100km)</label>
+          <input type="number" id="consumoGasolina" name="consumoGasolina" value="6.5" min="2" max="20" step="0.1">
+        </div>
+        <div class="field">
+          <label for="consumoElectrico">Consumo eléctrico (kWh/100km)</label>
+          <input type="number" id="consumoElectrico" name="consumoElectrico" value="16" min="5" max="35" step="0.5">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="tipoRecarga">¿Dónde recargas principalmente?</label>
+        <select id="tipoRecarga" name="tipoRecarga">
+          <option value="casa" selected>En casa (≈0,20 €/kWh)</option>
+          <option value="publica">En cargador público rápido (≈0,45 €/kWh)</option>
+        </select>
+      </div>
+    </form>
+
+    <div id="comparador">
+      <!-- generado por js/comparador-gasolina-electrico.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Compensa pasarse al coche eléctrico?</h2>
+    <p>En el día a día, el ahorro de un eléctrico está casi todo en la energía: cargar en casa suele costar entre un tercio y la mitad de lo que cuesta recorrer la misma distancia en gasolina o diésel. Ese ahorro se reduce bastante si recargas casi siempre en cargadores públicos rápidos, que cobran más por kWh que la tarifa doméstica. A la energía hay que sumarle el impuesto de circulación (con bonificaciones de hasta el 75% en muchos ayuntamientos para eléctricos) y el mantenimiento, que suele ser más barato al no haber cambios de aceite, embrague ni tantas piezas móviles.</p>
+    <p>Esta comparación no incluye el precio de compra del coche, que sigue siendo mayor en los eléctricos en la mayoría de segmentos — el cálculo aquí es solo el gasto recurrente mensual de uso, no la amortización de la compra.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué cambia tanto el resultado según dónde recargue?</summary>
+      <p>Los cargadores públicos rápidos cobran una tarifa por kWh bastante más alta que la luz de casa, para cubrir el coste de la instalación y la velocidad de carga. Si haces la mayoría de la recarga en un cargador doméstico o de trabajo, el ahorro frente a gasolina es mucho mayor.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿El eléctrico sale más barato en todos los casos?</summary>
+      <p>En energía y mantenimiento, casi siempre. Pero el precio de compra más alto hace que el ahorro mensual tarde tiempo en compensar la diferencia inicial — cuántos kilómetros al año hagas es la variable que más rápido lo compensa.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="mantenimiento-coche.html">🚗 Mantenimiento de un coche</a>
+      <a href="mantenimiento-moto.html">🏍️ Mantenimiento de una moto</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/comparador-gasolina-electrico.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/comparador-gasolina-electrico.js"></script>
+</body>
+</html>

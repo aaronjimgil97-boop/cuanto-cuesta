@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta tener un bebé? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste mensual de un bebé durante el primer año: pañales, alimentación, higiene, ropa, guardería y seguro médico.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">👶</span>
+      <h1>¿Cuánto cuesta tener un bebé?</h1>
+      <p>Estimación mensual durante el primer año de vida: pañales, alimentación, higiene, ropa y, si aplica, guardería y seguro médico.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="panales">Gama de pañales y toallitas</label>
+        <select id="panales" name="panales">
+          <option value="economica">Marca blanca / económica</option>
+          <option value="estandar" selected>Estándar</option>
+          <option value="premium">Premium</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="alimentacion">Alimentación</label>
+        <select id="alimentacion" name="alimentacion">
+          <option value="lactancia">Lactancia materna (extractor, complementos)</option>
+          <option value="formula" selected>Leche de fórmula</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="guarderia">¿Guardería?</label>
+        <select id="guarderia" name="guarderia">
+          <option value="no" selected>No, cuidado familiar</option>
+          <option value="publica">Sí, guardería pública/subvencionada</option>
+          <option value="privada">Sí, guardería privada</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="seguro">¿Seguro médico privado?</label>
+        <select id="seguro" name="seguro">
+          <option value="no" selected>No, sanidad pública</option>
+          <option value="si">Sí</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/bebe.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta un bebé el primer año?</h2>
+    <p>El primer año de un bebé concentra gastos que luego se estabilizan: pañales y toallitas, alimentación (lactancia o fórmula), higiene, ropa que se queda pequeña cada pocos meses y, si ambos progenitores trabajan, guardería. A esto hay que sumar, si se contrata, un seguro médico privado para pediatra y revisiones fuera de la sanidad pública.</p>
+    <p>La partida que más varía según la elección de cada familia es la guardería: una plaza pública o subvencionada puede costar la mitad o menos que una privada. La alimentación también cambia mucho entre lactancia materna (con un coste bajo, sobre todo en extractor y complementos) y la leche de fórmula, que tiene un gasto mensual fijo más alto. Esta calculadora no incluye el desembolso inicial en mobiliario y canastilla (carrito, cuna, trona...), que suele ser un gasto puntual de entre 1.000 € y 2.000 € antes de que nazca el bebé.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Baja mucho el gasto después del primer año?</summary>
+      <p>Suele bajar el gasto en pañales, pero aparecen otros: alimentación sólida, más ropa por el crecimiento, y a partir de los 3 años la etapa de colegio y actividades extraescolares, que tiene su propia dinámica de gasto.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué gasto tiene más margen para ajustar?</summary>
+      <p>La gama de pañales y el tipo de guardería son las dos decisiones que más cambian el total mensual, mucho más que la marca de ropa o los accesorios.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="mascotas.html">🐶 Coste de una mascota</a>
+      <a href="boda.html">💒 Coste de una boda</a>
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/bebe.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/bebe.js"></script>
+</body>
+</html>

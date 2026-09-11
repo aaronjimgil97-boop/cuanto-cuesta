@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta una fiesta o celebración? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste total de una comunión, bautizo, cumpleaños infantil, despedida de soltero, aniversario, fiesta de 18 o jubilación según el número de invitados.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">🎉</span>
+      <h1>¿Cuánto cuesta una fiesta o celebración?</h1>
+      <p>Comunión, bautizo, cumpleaños infantil, despedida de soltero, aniversario, 18 cumpleaños o jubilación: elige el tipo, el número de invitados y el nivel de producción.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="tipo">Tipo de celebración</label>
+        <select id="tipo" name="tipo">
+          <option value="cumpleanos">Cumpleaños infantil</option>
+          <option value="comunion" selected>Comunión</option>
+          <option value="bautizo">Bautizo</option>
+          <option value="despedida">Despedida de soltero/a</option>
+          <option value="aniversario">Aniversario de boda</option>
+          <option value="fiesta18">Fiesta de 18 años</option>
+          <option value="jubilacion">Fiesta de jubilación</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="invitados">Número de invitados</label>
+        <input type="number" id="invitados" name="invitados" value="40" min="2" max="300" step="1">
+      </div>
+
+      <div class="field">
+        <label for="nivel">Nivel (decoración, fotos, regalos, detalles)</label>
+        <select id="nivel" name="nivel">
+          <option value="basico">Básico</option>
+          <option value="medio" selected>Medio</option>
+          <option value="alto">Alto / con producción</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/evento.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta organizar una celebración familiar?</h2>
+    <p>Todas estas celebraciones comparten una estructura de gasto parecida a la de una boda a escala reducida: un coste por invitado (banquete, aperitivo o actividad principal) que crece directamente con el número de asistentes, y una serie de gastos más fijos — decoración, fotografía, regalos o detalles para los invitados — que dependen más del nivel de producción que se busque que de cuánta gente venga.</p>
+    <p>Esta calculadora usa cifras de referencia distintas para cada tipo de evento: una despedida de soltero suele tener un coste por persona más alto (actividad + comida + a veces alojamiento), mientras que un cumpleaños infantil es la celebración más económica de la lista.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué una comunión cuesta tanto como una boda pequeña?</summary>
+      <p>Porque suma banquete por invitado (a menudo en un restaurante o finca, con un menú similar al de una boda) más los gastos fijos de traje o vestido, fotografía y el regalo tradicional, que en conjunto pueden acercarse al coste de una boda con pocos invitados.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué incluye el nivel "alto / con producción"?</summary>
+      <p>Contratar profesionales para cada partida (fotógrafo y vídeo profesional, decoración a medida, catering de gama alta, regalos personalizados) en vez de resolverlo de forma más casera o con proveedores económicos.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="boda.html">💒 Coste de una boda</a>
+      <a href="navidad.html">🎄 Coste de la Navidad</a>
+      <a href="hijo.html">🎒 Coste de un hijo</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/eventos-datos.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/eventos-datos.js"></script>
+  <script src="../js/evento.js"></script>
+</body>
+</html>

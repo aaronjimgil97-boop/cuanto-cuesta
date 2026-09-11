@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta tener una mascota? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste mensual de tener un perro o un gato según su tamaño o raza: alimentación, higiene, veterinario y accesorios.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">🐶</span>
+      <h1>¿Cuánto cuesta tener una mascota?</h1>
+      <p>Estimación mensual: alimentación, higiene, veterinario/seguro y accesorios, según especie, tamaño y raza.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="especie">Especie</label>
+        <select id="especie" name="especie">
+          <option value="perro">Perro</option>
+          <option value="gato">Gato</option>
+          <option value="conejo">Conejo</option>
+          <option value="hamster">Hámster</option>
+          <option value="cobaya">Cobaya</option>
+          <option value="huron">Hurón</option>
+          <option value="loro">Loro / ave</option>
+          <option value="pez">Peces de acuario</option>
+          <option value="tortuga">Tortuga</option>
+          <option value="reptil">Reptil</option>
+          <option value="caballo">Caballo</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="raza">Tamaño / raza</label>
+        <select id="raza" name="raza">
+          <!-- se rellena por JS según la especie -->
+        </select>
+        <p class="field-hint">El tamaño influye más en el gasto que la raza concreta.</p>
+      </div>
+
+      <div class="field">
+        <label for="seguro">¿Seguro veterinario adicional?</label>
+        <select id="seguro" name="seguro">
+          <option value="no" selected>No</option>
+          <option value="si">Sí, plan de salud mensual</option>
+        </select>
+        <p class="field-hint">Cubre urgencias y pruebas que el gasto veterinario básico no incluye.</p>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/mascotas.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta tener una mascota al mes?</h2>
+    <p>Un perro o un gato no es solo pienso: hay que sumar la higiene (arena, champú, cortes de pelo), el veterinario habitual (vacunas, desparasitación, revisiones) y accesorios como juguetes, correas o rascadores. El gasto real depende sobre todo del tamaño del animal — un perro grande come varias veces más que uno pequeño y sus tratamientos veterinarios también son más caros por dosis — y de si contratas o no un seguro veterinario adicional para cubrir imprevistos.</p>
+    <p>Esta calculadora separa perro y gato, y dentro de cada especie distingue por tamaño o tipo de pelaje, que es lo que más influye en el gasto mensual. No incluye el desembolso inicial de adopción o compra, ni las vacunas y la esterilización de los primeros meses, que son un coste puntual aparte del mantenimiento habitual.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué un perro grande cuesta tanto más que uno pequeño?</summary>
+      <p>La alimentación escala directamente con el peso del animal, y muchos tratamientos veterinarios (antiparasitarios, anestesia, medicación) se dosifican también por peso, así que el coste sube con el tamaño en casi todas las partidas.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Merece la pena un seguro veterinario?</summary>
+      <p>Depende de tu tolerancia al riesgo: el seguro tiene un coste fijo mensual pero evita sustos grandes si hay una urgencia o una operación, que pueden costar varios cientos de euros de golpe.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="bebe.html">👶 Coste de un bebé</a>
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/mascotas.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/mascotas.js"></script>
+</body>
+</html>

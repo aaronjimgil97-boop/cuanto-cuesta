@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de ahorro e interés compuesto — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula cuánto puedes ahorrar con aportaciones mensuales e interés compuesto: aportación inicial, aportación mensual, interés anual y años.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">📈</span>
+      <h1>Ahorro e interés compuesto</h1>
+      <p>Con una aportación inicial, una aportación mensual constante y un interés anual esperado, calculamos cuánto tendrías ahorrado al final y qué parte son intereses generados, no dinero aportado por ti.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="inicial">Aportación inicial (€)</label>
+        <input type="number" id="inicial" name="inicial" value="1000" min="0" step="100">
+      </div>
+
+      <div class="field">
+        <label for="mensual">Aportación mensual (€)</label>
+        <input type="number" id="mensual" name="mensual" value="150" min="0" step="10">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="interes">Interés anual esperado (%)</label>
+          <input type="number" id="interes" name="interes" value="5" min="0" max="20" step="0.1">
+        </div>
+        <div class="field">
+          <label for="anios">Años</label>
+          <input type="number" id="anios" name="anios" value="15" min="1" max="50" step="1">
+        </div>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/ahorro.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>Cómo funciona el interés compuesto</h2>
+    <p>El interés compuesto es, en esencia, ganar intereses sobre los intereses ya generados, no solo sobre el dinero que aportaste. Al principio, la diferencia con un ahorro sin invertir es pequeña, pero con el tiempo se vuelve muy grande: en un plazo largo, buena parte del total final no es dinero que hayas aportado tú, sino rendimiento generado por el propio ahorro acumulado.</p>
+    <p>Esta calculadora asume un interés anual constante aplicado mensualmente, con aportaciones mensuales fijas. En la práctica, el rendimiento real de una inversión rara vez es constante año a año — varía con el mercado — así que trata el resultado como una proyección orientativa, no una promesa de rentabilidad.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué importa tanto empezar antes?</summary>
+      <p>Porque el interés compuesto necesita tiempo para acumularse. Los mismos euros aportados 10 años antes generan bastantes más intereses acumulados que si empiezas más tarde, aunque el total aportado sea el mismo.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué interés anual es "realista"?</summary>
+      <p>Depende totalmente del tipo de producto: una cuenta remunerada o un depósito suele dar mucho menos que un fondo indexado a largo plazo, que históricamente ha rondado ciertas rentabilidades medias anuales mayores pero con más variabilidad y riesgo de pérdida en el corto plazo. Esta calculadora no recomienda ningún producto concreto.</p>
+    </details>
+    <p class="field-hint">Esta calculadora ofrece una proyección informativa, no una promesa de rentabilidad ni asesoramiento financiero. Toda inversión conlleva riesgo, incluida la posibilidad de no alcanzar el rendimiento esperado.</p>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="prestamo-personal.html">💳 Préstamo personal</a>
+      <a href="hipoteca.html">🏦 Calcular una hipoteca</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Proyección informativa, ajusta los supuestos en <code>js/ahorro.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/ahorro.js"></script>
+</body>
+</html>

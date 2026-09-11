@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de préstamo personal: cuota mensual — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula la cuota mensual de un préstamo personal y el total de intereses que pagarás según el importe, el interés y el plazo.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">💳</span>
+      <h1>Calculadora de préstamo personal</h1>
+      <p>Introduce el importe, el interés (TIN) y el plazo en meses. Calculamos la cuota mensual y cuánto pagarás en total, capital más intereses.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="importe">Importe del préstamo (€)</label>
+        <input type="number" id="importe" name="importe" value="10000" min="500" step="100">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="interes">Interés (TIN aprox. %)</label>
+          <input type="number" id="interes" name="interes" value="7.5" min="0" max="25" step="0.1">
+        </div>
+        <div class="field">
+          <label for="meses">Plazo</label>
+          <select id="meses" name="meses">
+            <option value="12">12 meses</option>
+            <option value="24">24 meses</option>
+            <option value="36" selected>36 meses</option>
+            <option value="48">48 meses</option>
+            <option value="60">60 meses</option>
+            <option value="84">84 meses</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="comision">Comisión de apertura (%)</label>
+        <input type="number" id="comision" name="comision" value="0" min="0" max="5" step="0.1">
+        <p class="field-hint">Muchos préstamos personales ya no cobran comisión de apertura; revisa tu oferta concreta.</p>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/prestamo-personal.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>Cómo se calcula la cuota de un préstamo personal</h2>
+    <p>Un préstamo personal usa el mismo sistema de amortización francés que una hipoteca: cuota fija cada mes, con más peso de intereses al principio y más capital según avanza el plazo. La diferencia frente a una hipoteca está en el interés, casi siempre bastante más alto porque no hay una vivienda de por medio como garantía, y en el plazo, normalmente mucho más corto (de 1 a 8 años frente a los 20-30 de una hipoteca).</p>
+    <p>Alargar el plazo baja la cuota mensual pero encarece el préstamo en total, porque pagas intereses durante más tiempo. Esta calculadora muestra ambos números — la cuota y el coste total — para que puedas comparar ofertas de distintos bancos con plazos diferentes en igualdad de condiciones.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué el interés de un préstamo personal es más alto que el de una hipoteca?</summary>
+      <p>Porque el banco no tiene una vivienda como garantía en caso de impago, así que asume más riesgo y lo compensa con un interés mayor.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Compensa amortizar el préstamo antes de plazo?</summary>
+      <p>Casi siempre reduce el total de intereses pagados, salvo que el contrato tenga una comisión por amortización anticipada que compense esa diferencia. Conviene revisar las condiciones concretas de tu préstamo.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="hipoteca.html">🏦 Calcular una hipoteca</a>
+      <a href="ahorro.html">📈 Ahorro e interés compuesto</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/prestamo-personal.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/prestamo-personal.js"></script>
+</body>
+</html>

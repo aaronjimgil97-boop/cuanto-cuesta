@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta ser autónomo en 2026? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula la cuota de autónomos 2026 según tu rendimiento neto (tabla RETA por tramos), más gestoría y seguro de responsabilidad civil.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">💼</span>
+      <h1>¿Cuánto cuesta ser autónomo?</h1>
+      <p>La cuota de autónomos (RETA) depende de tu rendimiento neto mensual desde 2023. Añade también gestoría y seguro de responsabilidad civil para ver el coste fijo mensual real.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="tarifaPlana">¿Estás en tarifa plana (primer año)?</label>
+        <select id="tarifaPlana" name="tarifaPlana">
+          <option value="no" selected>No, cuota ordinaria por tramos</option>
+          <option value="si">Sí, tarifa plana (80 €/mes)</option>
+        </select>
+      </div>
+
+      <div class="field" id="campo-rendimiento">
+        <label for="rendimientoNeto">Rendimiento neto mensual (€, ingresos − gastos)</label>
+        <input type="number" id="rendimientoNeto" name="rendimientoNeto" value="1500" min="0" step="50">
+        <p class="field-hint">Es lo que determina tu tramo de cotización, no la facturación bruta.</p>
+      </div>
+
+      <div class="field">
+        <label for="gestoria">Gestoría (€/mes)</label>
+        <input type="number" id="gestoria" name="gestoria" value="60" min="0" step="5">
+      </div>
+
+      <div class="field">
+        <label for="seguroRC">¿Seguro de responsabilidad civil?</label>
+        <select id="seguroRC" name="seguroRC">
+          <option value="no" selected>No</option>
+          <option value="si">Sí (≈20 €/mes)</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/autonomo.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>Cómo se calcula la cuota de autónomos en 2026</h2>
+    <p>Desde 2023, los autónomos en España cotizan según su rendimiento neto real (ingresos menos gastos deducibles, con una deducción adicional del 7% para personas físicas), no según una base elegida libremente como antes. El sistema tiene 15 tramos: cuanto más ganas, más pagas, con una cuota mínima que va desde 200 €/mes para rendimientos de hasta 670 € al mes, hasta 500 €/mes para quien supera los 6.000 € netos mensuales. Dentro de cada tramo se puede optar por una base de cotización más alta que la mínima, lo que sube la cuota pero mejora la futura pensión y las prestaciones.</p>
+    <p>A la cuota del RETA hay que sumarle, en la práctica, otros gastos fijos casi inevitables: la gestoría (que lleva impuestos trimestrales y nóminas si hay empleados) y, según la actividad, un seguro de responsabilidad civil profesional. Esta calculadora no incluye el IRPF, que se paga aparte mediante pagos fraccionados trimestrales y depende de tus ingresos totales, no de tu cuota de autónomos.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Qué es la tarifa plana de autónomos?</summary>
+      <p>Es una cuota reducida de 80 €/mes para quienes se dan de alta por primera vez (o llevan más de 2-3 años sin estar de alta), válida el primer año y prorrogable un año más si el rendimiento neto se mantiene por debajo del salario mínimo interprofesional.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué pasa si mi rendimiento real no coincide con el previsto?</summary>
+      <p>La Seguridad Social regulariza al año siguiente: si ganaste más de lo previsto, tienes que pagar la diferencia; si ganaste menos, te devuelven lo pagado de más. Por eso conviene revisar el tramo varias veces al año si los ingresos son irregulares.</p>
+    </details>
+    <p class="field-hint">Tabla de tramos: Seguridad Social, Orden de cotización 2026 (BOE). Cifras de cuota mínima por tramo; no incluye IRPF ni cotizaciones adicionales voluntarias. Esta calculadora es informativa y no sustituye el asesoramiento de una gestoría.</p>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="hipoteca.html">🏦 Calcular una hipoteca</a>
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/autonomo-datos.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/autonomo-datos.js"></script>
+  <script src="../js/autonomo.js"></script>
+</body>
+</html>

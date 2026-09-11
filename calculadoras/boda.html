@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta una boda? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste total de una boda en España según el número de invitados, el estilo de banquete y los extras contratados.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">💒</span>
+      <h1>¿Cuánto cuesta una boda?</h1>
+      <p>Estimación del coste total: banquete, barra libre, espacio y los extras habituales (fotografía, música, flores, vestuario, papelería).</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="invitados">Número de invitados</label>
+        <input type="number" id="invitados" name="invitados" value="100" min="10" max="500" step="5">
+      </div>
+
+      <div class="field">
+        <label for="banquete">Estilo de banquete</label>
+        <select id="banquete" name="banquete">
+          <option value="economico">Económico (~90 €/persona)</option>
+          <option value="medio" selected>Medio (~150 €/persona)</option>
+          <option value="premium">Premium (~240 €/persona)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="barraLibre">Barra libre</label>
+        <select id="barraLibre" name="barraLibre">
+          <option value="0">Sin barra libre</option>
+          <option value="3" selected>3 horas</option>
+          <option value="5">5 horas</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="espacio">¿Alquiler de finca o espacio aparte?</label>
+        <select id="espacio" name="espacio">
+          <option value="no">No, incluido en el catering</option>
+          <option value="si" selected>Sí, finca con alquiler exclusivo</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="nivelExtras">Nivel de extras (foto/vídeo, música, flores, vestuario, papelería)</label>
+        <select id="nivelExtras" name="nivelExtras">
+          <option value="basico">Básico</option>
+          <option value="medio" selected>Medio</option>
+          <option value="alto">Alto / con producción</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/boda.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta una boda en España?</h2>
+    <p>El banquete es la partida que más pesa en el presupuesto de una boda, y escala directamente con el número de invitados: cada comensal de más son varias decenas de euros extra en catering, y si hay barra libre, también en bebida. A partir de ahí, el resto de gastos (fotografía y vídeo, música, flores y decoración, vestuario y alianzas, invitaciones) tienden a ser más fijos y dependen del nivel de producción que se busque, no tanto del número de invitados.</p>
+    <p>Esta calculadora reparte el presupuesto en esas partidas para que veas de un vistazo dónde se va el dinero, y también calcula el coste medio por invitado, útil para comparar presupuestos de diferentes catering o fincas. No incluye la luna de miel ni el anillo de compromiso, que suelen presupuestarse aparte.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Qué es lo que más dispara el presupuesto?</summary>
+      <p>El número de invitados, con diferencia: cada 10 invitados de más suponen fácilmente varios miles de euros adicionales solo en banquete y barra libre.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Es lo mismo el catering que el alquiler del espacio?</summary>
+      <p>No siempre. Algunas fincas incluyen el catering en el precio por invitado; otras cobran el alquiler del espacio aparte del servicio de comida. Esta calculadora te deja marcarlo para que no se cuente dos veces ni se te olvide.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="bebe.html">👶 Coste de un bebé</a>
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/boda.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/boda.js"></script>
+</body>
+</html>

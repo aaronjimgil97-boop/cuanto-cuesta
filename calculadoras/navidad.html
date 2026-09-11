@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta la Navidad? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste de la Navidad: comidas familiares, regalos, decoración y lotería, según el número de personas.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">🎄</span>
+      <h1>¿Cuánto cuesta la Navidad?</h1>
+      <p>Comidas familiares, regalos, decoración y lotería. Ajusta el número de comensales y de personas a las que regalas para ver el coste total de la campaña de Navidad.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="comensales">Comensales en las comidas familiares</label>
+        <input type="number" id="comensales" name="comensales" value="10" min="1" max="60" step="1">
+      </div>
+
+      <div class="field">
+        <label for="numComidas">¿Cuántas comidas/cenas familiares?</label>
+        <select id="numComidas" name="numComidas">
+          <option value="1">1 (solo Nochebuena o Navidad)</option>
+          <option value="2" selected>2 (Nochebuena y Navidad)</option>
+          <option value="4">4 (+ Nochevieja y Año Nuevo)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="presupuestoComida">Presupuesto por persona y comida (€)</label>
+        <input type="number" id="presupuestoComida" name="presupuestoComida" value="30" min="5" step="1">
+      </div>
+
+      <div class="field">
+        <label for="numRegalos">Personas a las que regalas</label>
+        <input type="number" id="numRegalos" name="numRegalos" value="8" min="0" max="40" step="1">
+      </div>
+
+      <div class="field">
+        <label for="presupuestoRegalo">Presupuesto medio por regalo (€)</label>
+        <input type="number" id="presupuestoRegalo" name="presupuestoRegalo" value="25" min="0" step="1">
+      </div>
+
+      <div class="field">
+        <label for="decoracion">Decoración (€, árbol, luces, adornos)</label>
+        <input type="number" id="decoracion" name="decoracion" value="40" min="0" step="5">
+      </div>
+
+      <div class="field">
+        <label for="loteria">Lotería de Navidad (€)</label>
+        <input type="number" id="loteria" name="loteria" value="20" min="0" step="5">
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/navidad.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto se gasta en Navidad en España?</h2>
+    <p>La campaña de Navidad concentra dos grandes bloques de gasto: la comida (que se multiplica por el número de comidas familiares y de comensales) y los regalos, que dependen sobre todo de a cuántas personas regalas y el presupuesto medio por persona. A eso se suman partidas más pequeñas pero recurrentes: decoración del hogar y la lotería de Navidad, una tradición muy extendida aunque no obligatoria.</p>
+    <p>Esta calculadora suma todo eso en un único total de la campaña completa (no es un gasto mensual, sino el coste total de las fiestas), para que puedas hacerte una idea del presupuesto antes de que lleguen las compras de última hora.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Qué partida suele disparar más el presupuesto?</summary>
+      <p>Los regalos, con diferencia, sobre todo en familias numerosas o con muchos sobrinos. La comida escala también rápido si se celebran las cuatro fechas (Nochebuena, Navidad, Nochevieja y Año Nuevo) con muchos comensales.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿La lotería de Navidad es un gasto o una inversión?</summary>
+      <p>Estadísticamente es un gasto: la probabilidad de que un décimo concreto resulte premiado con el Gordo es muy baja. Esta calculadora lo trata como el gasto que es, no como una expectativa de ingreso.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="evento.html">🎉 Cumpleaños, comunión y otras celebraciones</a>
+      <a href="boda.html">💒 Coste de una boda</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/navidad.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/navidad.js"></script>
+</body>
+</html>

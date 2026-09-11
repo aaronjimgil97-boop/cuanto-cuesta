@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta viajar a Japón, Londres, París o Nueva York? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste total de un viaje a Japón, Londres, París o Nueva York: vuelo, hotel, comida, transporte y entradas según los días y las personas.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">✈️</span>
+      <h1>¿Cuánto cuesta viajar a Japón, Londres, París o Nueva York?</h1>
+      <p>Elige el destino, los días y el nivel de gasto. Estimación del coste total: vuelo ida y vuelta, hotel, comida, transporte local y entradas.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="destino">Destino</label>
+        <select id="destino" name="destino">
+          <option value="japon">Japón (Tokio)</option>
+          <option value="londres" selected>Londres</option>
+          <option value="paris">París</option>
+          <option value="nuevayork">Nueva York</option>
+          <option value="otro">Otro destino</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="dias">Días de viaje</label>
+          <input type="number" id="dias" name="dias" value="7" min="1" max="60" step="1">
+        </div>
+        <div class="field">
+          <label for="personas">Personas</label>
+          <input type="number" id="personas" name="personas" value="2" min="1" max="10" step="1">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="nivel">Nivel de gasto</label>
+        <select id="nivel" name="nivel">
+          <option value="economico">Económico (hostales, transporte público)</option>
+          <option value="medio" selected>Medio (hotel 3-4*, algún taxi)</option>
+          <option value="alto">Alto (hotel 4-5*, más caprichos)</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/vacaciones.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta un viaje internacional?</h2>
+    <p>El presupuesto de un viaje se divide en dos tipos de gasto muy distintos: lo que cuesta llegar (el vuelo, que apenas cambia dividido entre más días) y lo que cuesta estar allí (hotel, comida, transporte local y entradas, que se multiplican por cada día y cada persona). Por eso los viajes cortos salen proporcionalmente más caros por día — el vuelo pesa más — y los viajes largos diluyen ese coste fijo inicial.</p>
+    <p>El destino cambia mucho el resultado: Japón y Nueva York tienen vuelos más caros desde España pero un coste diario que puede ser razonable si se elige bien; Londres y París tienen vuelos baratos pero un coste de vida alto una vez allí, sobre todo en alojamiento.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué el hotel no se multiplica igual que la comida?</summary>
+      <p>Porque una habitación de hotel suele compartirse entre 2 personas, así que esta calculadora reparte el coste de la habitación entre parejas de viajeros, mientras que la comida, el transporte y las entradas se cuentan por persona.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué es lo que más varía entre nivel "económico" y "alto"?</summary>
+      <p>El alojamiento, con diferencia: un hotel de gama alta puede costar 3-4 veces más que un hostal u hotel económico, mientras que la comida y el transporte varían de forma más moderada entre niveles.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="boda.html">💒 Coste de una boda</a>
+      <a href="ahorro.html">📈 Ahorro e interés compuesto</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/viajes-datos.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/viajes-datos.js"></script>
+  <script src="../js/vacaciones.js"></script>
+</body>
+</html>
