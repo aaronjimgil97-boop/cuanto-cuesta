@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta mantener una moto o scooter? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste mensual de mantener una moto o scooter: seguro, ITV, mantenimiento, neumáticos y combustible o recarga.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">🏍️</span>
+      <h1>¿Cuánto cuesta mantener una moto o scooter?</h1>
+      <p>Elige el tipo y la antigüedad. Estimación mensual: seguro, ITV, mantenimiento, neumáticos y combustible o recarga según tu uso.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo">
+          <option value="scooter125">Scooter 125cc</option>
+          <option value="moto125">Moto 125cc</option>
+          <option value="motoMedia" selected>Moto media cilindrada (250-500cc)</option>
+          <option value="motoGrande">Moto grande cilindrada (600cc o más)</option>
+          <option value="motoElectrica">Moto/scooter eléctrica</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="antiguedad">Antigüedad</label>
+        <select id="antiguedad" name="antiguedad">
+          <option value="nueva">Nueva (hasta 3 años)</option>
+          <option value="media" selected>Media (3-8 años)</option>
+          <option value="veterana">Veterana (más de 8 años)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="km">Kilómetros al año</label>
+        <select id="km" name="km">
+          <option value="3000">Hasta 3.000 km</option>
+          <option value="8000" selected>Entre 3.000 y 8.000 km</option>
+          <option value="15000">Más de 8.000 km</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="parking">¿Plaza de garaje de pago?</label>
+        <select id="parking" name="parking">
+          <option value="no" selected>No</option>
+          <option value="si">Sí</option>
+        </select>
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/mantenimiento-moto.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta mantener una moto al mes?</h2>
+    <p>Una moto o un scooter suele salir bastante más barato de mantener que un coche, pero tiene sus propias partidas: seguro (más barato cuanto menor es la cilindrada), ITV, mantenimiento (cadena, frenos, aceite, revisiones) y neumáticos, que en moto se desgastan más rápido en proporción que en un coche. La cilindrada es lo que más influye en el seguro y en el consumo; la antigüedad influye igual que en los coches: cuanto más nueva, más caro el seguro y más barato el mantenimiento, y al revés según se hace más veterana.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué una moto eléctrica sale más barata de mantenimiento?</summary>
+      <p>No tiene cadena de transmisión tradicional, ni cambios de aceite ni embrague en la mayoría de modelos, así que las revisiones son más simples y baratas. El seguro suele ser similar o algo más caro, y la ITV en muchos casos no es obligatoria hasta pasados varios años.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Compensa una 125 frente a una de mayor cilindrada para uso diario?</summary>
+      <p>Para trayectos urbanos cortos, una 125 tiene seguro y consumo más bajos y no necesita carné A, lo que la hace más barata de mantener en el día a día que una moto de mayor cilindrada.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="mantenimiento-coche.html">🚗 Mantenimiento de un coche</a>
+      <a href="comparador-gasolina-electrico.html">⚡ Gasolina vs. eléctrico</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/motos-datos.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/motos-datos.js"></script>
+  <script src="../js/mantenimiento-moto.js"></script>
+</body>
+</html>
