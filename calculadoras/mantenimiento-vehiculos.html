@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¿Cuánto cuesta mantener un coche? — Cuánto Cuesta</title>
-  <meta name="description" content="Calcula el coste mensual de mantener un BMW Serie 3, un Audi A4 u otro coche: seguro, ITV, revisiones, neumáticos y combustible.">
+  <meta name="description" content="Calcula el coste mensual de mantener un coche eligiendo marca, modelo, motorización y año: seguro, ITV, revisiones y combustible o recarga.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -12,67 +13,131 @@
   <header class="site-header">
     <div class="wrap">
       <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
-      <nav class="site-nav">
-        <a href="../index.html#vivienda">Vivienda</a>
-        <a href="../index.html#vehiculos">Vehículos</a>
-      </nav>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
     </div>
   </header>
 
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
   <section class="calc-header">
     <div class="wrap">
-      <a class="breadcrumb" href="../index.html">← Volver al índice</a>
+      <span class="icon-badge">🚗</span>
       <h1>¿Cuánto cuesta mantener un coche?</h1>
-      <p>Estimación mensual: seguro, impuesto de circulación, ITV, revisiones, neumáticos y combustible según tu uso.</p>
+      <p>Elige marca, modelo, motorización y año. Estimación mensual: seguro, impuesto de circulación, ITV, revisiones y combustible o recarga según tu uso.</p>
     </div>
   </section>
 
   <section class="calc-layout wrap">
 
-    <form id="calc-form">
-      <div class="field">
-        <label for="modelo">Modelo</label>
-        <select id="modelo" name="modelo">
-          <option value="bmw-serie-3">BMW Serie 3</option>
-          <option value="audi-a4">Audi A4</option>
-        </select>
+    <div>
+      <div class="car-preview">
+        <svg id="car-svg" viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silueta genérica del coche seleccionado">
+          <!-- Hatchback -->
+          <g id="car-hatchback">
+            <ellipse cx="150" cy="123" rx="120" ry="6" fill="var(--ink)" opacity="0.12"></ellipse>
+            <rect class="car-shape" x="24" y="75" width="252" height="34" rx="13"></rect>
+            <path class="car-shape" d="M85,75 L108,42 L188,42 L212,75 Z"></path>
+            <path class="car-glass" d="M96,72 L114,50 L182,50 L200,72 Z"></path>
+            <rect class="car-detail" x="30" y="88" width="10" height="5" rx="2"></rect>
+            <rect class="car-detail" x="258" y="88" width="10" height="5" rx="2"></rect>
+            <circle class="car-wheel" cx="82" cy="110" r="17"></circle>
+            <circle class="car-wheel-hub" cx="82" cy="110" r="7"></circle>
+            <circle class="car-wheel" cx="222" cy="110" r="17"></circle>
+            <circle class="car-wheel-hub" cx="222" cy="110" r="7"></circle>
+          </g>
+          <!-- Sedán -->
+          <g id="car-sedan" style="display:none">
+            <ellipse cx="150" cy="123" rx="130" ry="6" fill="var(--ink)" opacity="0.12"></ellipse>
+            <rect class="car-shape" x="14" y="78" width="272" height="30" rx="12"></rect>
+            <path class="car-shape" d="M70,78 L95,48 L160,45 L200,78 Z"></path>
+            <path class="car-shape" d="M255,78 L272,66 L286,78 Z"></path>
+            <path class="car-glass" d="M80,75 L100,54 L158,52 L192,75 Z"></path>
+            <rect class="car-detail" x="18" y="90" width="10" height="5" rx="2"></rect>
+            <rect class="car-detail" x="270" y="90" width="10" height="5" rx="2"></rect>
+            <circle class="car-wheel" cx="78" cy="110" r="17"></circle>
+            <circle class="car-wheel-hub" cx="78" cy="110" r="7"></circle>
+            <circle class="car-wheel" cx="228" cy="110" r="17"></circle>
+            <circle class="car-wheel-hub" cx="228" cy="110" r="7"></circle>
+          </g>
+          <!-- SUV -->
+          <g id="car-suv" style="display:none">
+            <ellipse cx="150" cy="126" rx="125" ry="6" fill="var(--ink)" opacity="0.12"></ellipse>
+            <rect class="car-shape" x="20" y="65" width="260" height="44" rx="12"></rect>
+            <path class="car-shape" d="M78,65 L100,35 L195,35 L222,65 Z"></path>
+            <path class="car-glass" d="M90,62 L106,43 L189,43 L206,62 Z"></path>
+            <rect class="car-detail" x="26" y="80" width="11" height="6" rx="2"></rect>
+            <rect class="car-detail" x="262" y="80" width="11" height="6" rx="2"></rect>
+            <circle class="car-wheel" cx="80" cy="112" r="19"></circle>
+            <circle class="car-wheel-hub" cx="80" cy="112" r="8"></circle>
+            <circle class="car-wheel" cx="222" cy="112" r="19"></circle>
+            <circle class="car-wheel-hub" cx="222" cy="112" r="8"></circle>
+          </g>
+        </svg>
       </div>
 
-      <div class="field">
-        <label for="antiguedad">Antigüedad del coche</label>
-        <select id="antiguedad" name="antiguedad">
-          <option value="nuevo">Nuevo / hasta 3 años</option>
-          <option value="usado" selected>Entre 3 y 8 años</option>
-          <option value="viejo">Más de 8 años</option>
-        </select>
-        <p class="field-hint">Afecta al seguro, a las revisiones y a la probabilidad de averías.</p>
-      </div>
+      <form id="calc-form">
+        <div class="field-row">
+          <div class="field">
+            <label for="marca">Marca</label>
+            <select id="marca" name="marca"></select>
+          </div>
+          <div class="field">
+            <label for="modelos">Modelo</label>
+            <select id="modelos" name="modelos"></select>
+          </div>
+        </div>
 
-      <div class="field">
-        <label for="km">Kilómetros al año</label>
-        <select id="km" name="km">
-          <option value="8000">Hasta 8.000 km</option>
-          <option value="15000" selected>Entre 8.000 y 15.000 km</option>
-          <option value="25000">Más de 15.000 km</option>
-        </select>
-      </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="motorizacion">Motorización</label>
+            <select id="motorizacion" name="motorizacion"></select>
+          </div>
+          <div class="field">
+            <label for="anio">Año</label>
+            <select id="anio" name="anio"></select>
+          </div>
+        </div>
 
-      <div class="field">
-        <label for="combustible">Combustible</label>
-        <select id="combustible" name="combustible">
-          <option value="gasolina" selected>Gasolina</option>
-          <option value="diesel">Diésel</option>
-        </select>
-      </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="km">Kilómetros al año</label>
+            <select id="km" name="km">
+              <option value="8000">Hasta 8.000 km</option>
+              <option value="15000" selected>Entre 8.000 y 15.000 km</option>
+              <option value="25000">Más de 15.000 km</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="color">Color</label>
+            <select id="color" name="color">
+              <option value="rojo">Rojo</option>
+              <option value="azul" selected>Azul</option>
+              <option value="blanco">Blanco</option>
+              <option value="negro">Negro</option>
+              <option value="gris">Gris</option>
+              <option value="verde">Verde</option>
+            </select>
+          </div>
+        </div>
 
-      <div class="field">
-        <label for="parking">¿Plaza de garaje de pago?</label>
-        <select id="parking" name="parking">
-          <option value="no" selected>No</option>
-          <option value="si">Sí</option>
-        </select>
-      </div>
-    </form>
+        <div class="field">
+          <label for="parking">¿Plaza de garaje de pago?</label>
+          <select id="parking" name="parking">
+            <option value="no" selected>No</option>
+            <option value="si">Sí</option>
+          </select>
+        </div>
+      </form>
+    </div>
 
     <div class="receipt" id="receipt" aria-live="polite">
       <!-- generado por js/mantenimiento-coche.js -->
@@ -80,13 +145,41 @@
 
   </section>
 
+  <section class="seo-content wrap">
+    <h2>¿Cuánto cuesta mantener un coche cada mes?</h2>
+    <p>Mantener un coche va mucho más allá de la gasolina. Entre el seguro, el impuesto de circulación, la ITV, las revisiones periódicas y el combustible (o la electricidad, si es un eléctrico), el coste mensual real de un coche suele sorprender a quien solo cuenta lo que gasta en el surtidor. Esta calculadora reparte el gasto en sus partidas principales para que veas el número completo, no solo una parte.</p>
+    <p>El precio del seguro y de las revisiones depende sobre todo de tres cosas: la marca y el segmento del modelo (un utilitario económico no cuesta lo mismo de asegurar que una berlina premium), el tipo de carrocería (un SUV suele ser más caro de mantener que un compacto) y la antigüedad del vehículo — los coches muy nuevos tienen un seguro más caro por su mayor valor, mientras que los más veteranos compensan un seguro más barato con más gasto en averías. Si el coche es eléctrico, el impuesto de circulación y la ITV suelen ser más baratos, y el "combustible" se sustituye por el coste de la electricidad de la recarga.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué cambia el seguro según el año del coche?</summary>
+      <p>Un coche muy nuevo tiene un valor de reposición alto, así que asegurarlo a todo riesgo cuesta más. A partir de cierta antigüedad muchos conductores pasan a un seguro a terceros, más barato, aunque a cambio el propio vehículo empieza a dar más averías y las revisiones se encarecen.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Compensa un coche eléctrico frente a uno de combustión?</summary>
+      <p>En el gasto de energía normalmente sí: cargar en casa suele salir más barato que repostar la misma distancia en gasolina o diésel. También suele haber descuentos en el impuesto de circulación. A cambio, el seguro de un eléctrico tiende a ser algo más caro y el precio de compra inicial es mayor.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Estos datos incluyen neumáticos o depreciación?</summary>
+      <p>Las revisiones y averías incluyen una media orientativa que cubre el desgaste normal, pero no la depreciación del valor del coche con el tiempo, que es un coste distinto y depende mucho del modelo y de cómo evolucione el mercado de segunda mano.</p>
+    </details>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+      <a href="hipoteca.html">🏦 Calcular una hipoteca</a>
+      <a href="boda.html">💒 Coste de una boda</a>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="wrap">
-      <span>Cifras estimadas de referencia, ajústalas en <code>js/mantenimiento-coche.js</code>.</span>
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/coches-datos.js</code> y <code>js/mantenimiento-coche.js</code>.</span>
       <span>Cuánto Cuesta</span>
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/coches-datos.js"></script>
   <script src="../js/mantenimiento-coche.js"></script>
 </body>
 </html>

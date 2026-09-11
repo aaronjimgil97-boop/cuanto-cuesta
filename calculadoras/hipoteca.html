@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de hipoteca: cuota mensual real — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula la cuota mensual de una hipoteca y el coste real incluyendo entrada, tipo de interés, años, IBI, comunidad y seguro de hogar.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">🏦</span>
+      <h1>Calculadora de hipoteca</h1>
+      <p>Introduce el precio de la vivienda, la entrada, el tipo de interés y los años del préstamo. Calculamos la cuota mensual y el coste mensual real sumando IBI, comunidad y seguro de hogar.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="precio">Precio de la vivienda (€)</label>
+        <input type="number" id="precio" name="precio" value="250000" min="20000" step="1000">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="entrada">Entrada (%)</label>
+          <input type="number" id="entrada" name="entrada" value="20" min="0" max="100" step="1">
+        </div>
+        <div class="field">
+          <label for="tipo">Tipo de interés</label>
+          <select id="tipo" name="tipo">
+            <option value="fijo" selected>Fijo</option>
+            <option value="variable">Variable</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="interes">Interés (TIN aprox. %)</label>
+          <input type="number" id="interes" name="interes" value="3.2" min="0" max="15" step="0.1">
+        </div>
+        <div class="field">
+          <label for="anios">Años del préstamo</label>
+          <select id="anios" name="anios">
+            <option value="15">15 años</option>
+            <option value="20">20 años</option>
+            <option value="25">25 años</option>
+            <option value="30" selected>30 años</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="gastosCompra">Gastos de compra (%, impuestos + notaría + registro + gestoría)</label>
+        <input type="number" id="gastosCompra" name="gastosCompra" value="10" min="0" max="20" step="0.5">
+        <p class="field-hint">Es un pago único al comprar, no un gasto mensual. En España suele rondar el 10-12% del precio.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="ibi">IBI (€/año)</label>
+          <input type="number" id="ibi" name="ibi" value="500" min="0" step="10">
+        </div>
+        <div class="field">
+          <label for="comunidad">Comunidad (€/mes)</label>
+          <input type="number" id="comunidad" name="comunidad" value="50" min="0" step="5">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="seguroHogar">Seguro de hogar (€/mes)</label>
+        <input type="number" id="seguroHogar" name="seguroHogar" value="25" min="0" step="1">
+      </div>
+    </form>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/hipoteca.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>Cómo se calcula la cuota de una hipoteca</h2>
+    <p>La cuota mensual de una hipoteca se calcula con el sistema de amortización francés, el que usan la inmensa mayoría de bancos en España: cada mes pagas una cantidad fija que combina intereses y devolución de capital, de forma que al principio del préstamo pagas más intereses y menos capital, y según avanzan los años esa proporción se invierte. El resultado depende de tres cosas: el importe financiado (precio menos entrada), el tipo de interés y el plazo en años — a más años, la cuota baja pero el total de intereses pagados sube.</p>
+    <p>Pero la cuota del banco no es todo lo que cuesta tener una vivienda en propiedad cada mes. Hay que sumar el <strong>IBI</strong> (impuesto municipal anual, prorrateado aquí a mensual), la <strong>comunidad de propietarios</strong> si el edificio la tiene, y el <strong>seguro de hogar</strong>, que la mayoría de bancos exige contratar (a veces también uno de vida) para conceder la hipoteca. Esta calculadora suma todo eso para darte el coste mensual real, no solo la cuota del préstamo. Aparte, y solo una vez, están los <strong>gastos de compra</strong>: impuestos (ITP en vivienda de segunda mano, o IVA + AJD en obra nueva), notaría, registro de la propiedad y gestoría, que en España suelen sumar entre el 10% y el 12% del precio de la vivienda.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Hipoteca fija o variable, cuál sale más barata?</summary>
+      <p>Depende de cómo evolucionen los tipos de interés durante los años del préstamo, algo que no se puede saber con certeza de antemano. La fija da tranquilidad porque la cuota no cambia nunca; la variable suele empezar más barata pero puede subir o bajar con el euríbor. Esta calculadora no predice tipos futuros: solo estima la cuota al interés que introduzcas.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Por qué a más años de hipoteca pago más intereses en total?</summary>
+      <p>Porque alargar el plazo reduce la cuota mensual, pero mantiene la deuda viva más tiempo, y los intereses se calculan sobre el capital pendiente cada mes. Un préstamo a 30 años casi siempre acumula más intereses totales que el mismo importe a 15 años, aunque la cuota mensual sea más cómoda.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué porcentaje de entrada es habitual?</summary>
+      <p>La mayoría de bancos en España financian hasta el 80% del valor de tasación (o de compra, el que sea menor), lo que implica una entrada mínima del 20%, más los gastos de compra aparte. Algunos programas para menores de 35 años o vivienda protegida permiten porcentajes de financiación más altos.</p>
+    </details>
+    <p class="field-hint">Esta calculadora ofrece una estimación informativa y no constituye asesoramiento financiero ni una oferta vinculante de ninguna entidad. Las condiciones reales de una hipoteca dependen de cada banco y de tu perfil financiero.</p>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="alquiler-vs-comprar.html">⚖️ Alquiler vs. comprar</a>
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/hipoteca.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/hipoteca.js"></script>
+</body>
+</html>

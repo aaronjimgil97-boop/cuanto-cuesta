@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alquiler vs. comprar: comparador de coste mensual — Cuánto Cuesta</title>
+  <meta name="description" content="Compara el coste mensual real de alquilar una vivienda frente a comprarla con hipoteca, incluyendo IBI, comunidad, seguro y gastos de compra.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">⚖️</span>
+      <h1>Alquiler vs. comprar</h1>
+      <p>Compara el gasto mensual real de alquilar frente a comprar la misma vivienda con hipoteca. No te decimos qué es "mejor" — cada opción tiene ventajas que no son solo económicas — pero sí te damos el número real de cada una.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <form id="calc-form">
+      <div class="field">
+        <label for="alquilerMensual">Alquiler mensual de esa vivienda (€)</label>
+        <input type="number" id="alquilerMensual" name="alquilerMensual" value="1000" min="0" step="10">
+      </div>
+
+      <div class="field">
+        <label for="precio">Precio de compra de la misma vivienda (€)</label>
+        <input type="number" id="precio" name="precio" value="250000" min="20000" step="1000">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="entrada">Entrada (%)</label>
+          <input type="number" id="entrada" name="entrada" value="20" min="0" max="100" step="1">
+        </div>
+        <div class="field">
+          <label for="interes">Interés hipoteca (%)</label>
+          <input type="number" id="interes" name="interes" value="3.2" min="0" max="15" step="0.1">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="anios">Años del préstamo</label>
+          <select id="anios" name="anios">
+            <option value="15">15 años</option>
+            <option value="20">20 años</option>
+            <option value="25">25 años</option>
+            <option value="30" selected>30 años</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="gastosCompra">Gastos de compra (%)</label>
+          <input type="number" id="gastosCompra" name="gastosCompra" value="10" min="0" max="20" step="0.5">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="ibi">IBI si compras (€/año)</label>
+          <input type="number" id="ibi" name="ibi" value="500" min="0" step="10">
+        </div>
+        <div class="field">
+          <label for="comunidad">Comunidad (€/mes)</label>
+          <input type="number" id="comunidad" name="comunidad" value="50" min="0" step="5">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="seguroHogar">Seguro de hogar si compras (€/mes)</label>
+        <input type="number" id="seguroHogar" name="seguroHogar" value="25" min="0" step="1">
+      </div>
+    </form>
+
+    <div id="comparador">
+      <!-- generado por js/alquiler-vs-comprar.js -->
+    </div>
+
+  </section>
+
+  <section class="seo-content wrap">
+    <h2>Alquilar o comprar: la pregunta que más se busca</h2>
+    <p>La comparación pura de gasto mensual casi siempre favorece al alquiler frente a la cuota de una hipoteca, sobre todo con entradas bajas o tipos de interés altos. Pero esa comparación tiene truco: el dinero de la hipoteca va construyendo patrimonio (al terminar de pagar, la vivienda es tuya), mientras que el alquiler no genera ninguna propiedad al final. Esta calculadora no resuelve ese dilema — no es una decisión solo económica, también depende de tu estabilidad laboral, si piensas quedarte muchos años en la misma ciudad y cuánto valoras la flexibilidad de poder mudarte — pero sí te da el número exacto de gasto mensual de cada opción, incluyendo todo lo que se suele olvidar: IBI, comunidad y seguro de hogar en el caso de comprar.</p>
+    <p>Para que la comparación sea justa, esta calculadora reparte también los gastos de compra (impuestos, notaría, registro, gestoría) entre los meses del préstamo, solo a efectos de comparación mensual — en la práctica ese dinero se paga de golpe al firmar, no cada mes.</p>
+    <h2>Preguntas frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Por qué el alquiler suele salir más barato al mes?</summary>
+      <p>Porque la cuota de una hipoteca no solo paga "vivir ahí": también devuelve capital que se convierte en patrimonio tuyo. El alquiler, en cambio, es un gasto que no genera propiedad. Comparar solo el número mensual, sin tener en cuenta ese patrimonio acumulado, favorece casi siempre al alquiler.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cuándo suele compensar más comprar?</summary>
+      <p>En general, cuanto más tiempo se piensa permanecer en la misma vivienda, más se diluyen los gastos de compra (que son un pago único) y más patrimonio se acumula frente al alquiler. Mudanzas frecuentes penalizan la compra por esos costes fijos de entrada y salida.</p>
+    </details>
+    <p class="field-hint">Esta calculadora ofrece una comparación informativa y no constituye asesoramiento financiero. No somos asesores financieros: para una decisión así, especialmente si implica cifras grandes, conviene valorar también tu situación personal con un profesional.</p>
+    <h2>Calculadoras relacionadas</h2>
+    <div class="related-links">
+      <a href="hipoteca.html">🏦 Calcular una hipoteca</a>
+      <a href="coste-vida.html">🏠 Coste de vida por ciudad</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Cifras estimadas de referencia, ajústalas en <code>js/alquiler-vs-comprar.js</code>.</span>
+      <span>Cuánto Cuesta</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/alquiler-vs-comprar.js"></script>
+</body>
+</html>
