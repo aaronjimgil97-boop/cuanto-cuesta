@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>try{if(localStorage.getItem('cc-tema')==='oscuro')document.documentElement.setAttribute('data-theme','oscuro');}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta mantener una furgoneta? — Cuánto Cuesta</title>
+  <meta name="description" content="Calcula el coste mensual de mantener una furgoneta eligiendo marca, modelo, motorización y año: seguro, ITV, revisiones y combustible o recarga.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">Cuánto Cuesta <span>€/mes</span></a>
+      <div class="header-right">
+        <nav class="site-nav">
+          <a href="../index.html#vivienda">Vivienda</a>
+          <a href="../index.html#vehiculos">Vehículos</a>
+          <a href="../index.html#mascotas">Mascotas</a>
+          <a href="../index.html#eventos">Eventos</a>
+          <a href="../index.html#finanzas">Finanzas</a>
+        </nav>
+        <button type="button" id="theme-toggle" class="theme-toggle">🌙 Oscuro</button>
+      </div>
+    </div>
+  </header>
+    <nav class="breadcrumb-nav wrap" id="breadcrumb"></nav>
+
+  <section class="calc-header">
+    <div class="wrap">
+      <span class="icon-badge">🚐</span>
+      <h1>¿Cuánto cuesta mantener una furgoneta?</h1>
+      <p>Elige marca, modelo, motorización y año. Estimación mensual: seguro, impuesto de circulación, ITV, revisiones y combustible o recarga según tu uso.</p>
+    </div>
+  </section>
+
+  <section class="calc-layout wrap">
+
+    <div>
+      <div class="van-preview">
+        <svg id="van-svg" viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silueta genérica de la furgoneta seleccionada">
+
+          <g id="van-furgoneta">
+            <ellipse cx="150" cy="123" rx="125" ry="6"
+                     fill="var(--ink)" opacity="0.12"></ellipse>
+
+            <rect class="van-shape"
+                  x="25" y="55" width="250" height="54" rx="8"></rect>
+
+            <path class="van-shape"
+                  d="M25,55 L25,90 L12,90 L12,108
+                     L25,108 L25,112 L275,112
+                     L275,55 Z"></path>
+
+            <path class="van-glass"
+                  d="M42,75 L55,62 L105,62 L105,85 L42,85 Z"></path>
+
+            <rect class="van-detail"
+                  x="112" y="62" width="120" height="23" rx="2"></rect>
+
+            <rect class="van-detail"
+                  x="245" y="68" width="18" height="12" rx="2"></rect>
+
+            <circle class="van-wheel"
+                    cx="72" cy="110" r="17"></circle>
+
+            <circle class="van-wheel-hub"
+                    cx="72" cy="110" r="7"></circle>
+
+            <circle class="van-wheel"
+                    cx="228" cy="110" r="17"></circle>
+
+            <circle class="van-wheel-hub"
+                    cx="228" cy="110" r="7"></circle>
+          </g>
+
+        </svg>
+      </div>
+
+      <form id="calc-form">
+
+        <div class="field-row">
+
+          <div class="field">
+            <label for="marca">Marca</label>
+            <select id="marca" name="marca"></select>
+          </div>
+
+          <div class="field">
+            <label for="modelo">Modelo</label>
+            <select id="modelo" name="modelo"></select>
+          </div>
+
+        </div>
+
+        <div class="field-row">
+
+          <div class="field">
+            <label for="motorizacion">Motorización</label>
+            <select id="motorizacion" name="motorizacion"></select>
+          </div>
+
+          <div class="field">
+            <label for="anio">Año</label>
+            <select id="anio" name="anio"></select>
+          </div>
+
+        </div>
+
+        <div class="field-row">
+
+          <div class="field">
+            <label for="km">Kilómetros al año</label>
+            <select id="km" name="km">
+              <option value="10000">Hasta 10.000 km</option>
+              <option value="20000" selected>Entre 10.000 y 20.000 km</option>
+              <option value="30000">Entre 20.000 y 30.000 km</option>
+              <option value="40000">Más de 30.000 km</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="color">Color</label>
+            <select id="color" name="color">
+              <option value="blanco" selected>Blanco</option>
+              <option value="gris">Gris</option>
+              <option value="negro">Negro</option>
+              <option value="azul">Azul</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label for="parking">¿Plaza de garaje de pago?</label>
+          <select id="parking" name="parking">
+            <option value="no" selected>No</option>
+            <option value="si">Sí</option>
+          </select>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="receipt" id="receipt" aria-live="polite">
+      <!-- generado por js/mantenimiento-furgoneta.js -->
+    </div>
+    </footer>
+    <script src="../js/common.js"></script>
+<script src="../js/furgonetas-datos.js"></script>
+<script src="../js/mantenimiento-furgoneta.js"></script>
+</body>
+  </section>
