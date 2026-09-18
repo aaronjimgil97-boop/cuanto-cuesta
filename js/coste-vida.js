@@ -197,9 +197,9 @@ const filas = items
   )
   .join("");
 
-  receipt.innerHTML = `
+receipt.innerHTML = `
     <div class="receipt-title">
-      <span>Vivir en ${nombreCiudad}</span>
+      <span>🏠 Vivir en ${nombreCiudad}</span>
       <span class="stamp">estimado</span>
     </div>
     ${filas}
@@ -208,6 +208,12 @@ const filas = items
       <span class="value expense">${euros(total)}</span>
     </div>
     <p class="receipt-note">Estimación orientativa para una persona. Los precios reales varían según barrio, antigüedad del contrato y hábitos personales.</p>
+        <div class="receipt-actions">
+      <button type="button" class="btn" data-action="copiar">📋 Copiar</button>
+      <button type="button" class="btn" data-action="compartir">🔗 Compartir</button>
+      <button type="button" class="btn" data-action="imprimir">🖨️ Imprimir</button>
+      <button type="button" class="btn" data-action="pdf">⬇️ Descargar PDF</button>
+    </div>
   `;
 }
 
