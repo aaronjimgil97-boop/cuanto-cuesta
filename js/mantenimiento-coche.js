@@ -1,8 +1,3 @@
-/* ============================================================
-   Lógica de la calculadora de mantenimiento de coche.
-   Los datos (marcas, modelos, motorizaciones, precios) viven
-   en coches-datos.js. Utilidades compartidas en common.js.
-   ============================================================ */
 
 const ANIO_ACTUAL = 2026;
 const STORAGE_KEY = "cc_coche";

@@ -1,10 +1,3 @@
-````
-/* ============================================================
-   Lógica de la calculadora de mantenimiento de furgonetas.
-   Los datos viven en furgonetas-datos.js.
-   Utilidades compartidas en common.js.
-   ============================================================ */
-
 const ANIO_ACTUAL_FURGONETA = 2026;
 const STORAGE_KEY_FURGONETA = "cc_furgoneta";
 
@@ -172,10 +165,6 @@ function calcularFurgoneta() {
       (esElectrica ? 0.25 : 1)
   );
 
-  /*
-     Las furgonetas tienen una ITV diferente de la de un turismo.
-     Para esta estimación utilizamos un coste mensual prorrateado.
-  */
   const itv = esElectrica ? 3 : 4;
 
 
@@ -315,10 +304,6 @@ document.addEventListener(
       document.getElementById("calc-form");
 
 
-    /*
-       Intentamos recuperar primero los datos
-       guardados y después los parámetros de URL.
-    */
     CC.restaurarFormulario(
       STORAGE_KEY_FURGONETA,
       form
@@ -381,12 +366,6 @@ document.addEventListener(
       modeloInicial
     );
 
-
-    /*
-       Volvemos a aplicar los datos guardados
-       ahora que ya existen las opciones
-       de modelo, motor y año.
-    */
     CC.restaurarFormulario(
       STORAGE_KEY_FURGONETA,
       form
@@ -433,4 +412,4 @@ document.addEventListener(
     calcularFurgoneta();
   }
 );
-````
+

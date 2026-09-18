@@ -1,7 +1,3 @@
-/* ============================================================
-   Calculadora de mantenimiento de moto/scooter.
-   Datos en js/motos-datos.js.
-   ============================================================ */
 
 const PRECIO_GASOLINA_MOTO = 1.65;
 const PRECIO_ELECTRICIDAD_MOTO = 0.2;

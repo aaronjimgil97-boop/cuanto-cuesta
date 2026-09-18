@@ -1,9 +1,3 @@
-```js
-/* ============================================================
-   Datos de la calculadora de mantenimiento de furgonetas.
-   Valores orientativos para estimaciones mensuales.
-   ============================================================ */
-
 const SEGMENTO_BASE_FURGONETA = {
   pequena: {
     seguro: 55,
@@ -48,17 +42,6 @@ const COLORES_FURGONETA = {
   rojo: { nombre: "Rojo", hex: "#a63a2e" },
 };
 
-/*
-   Cada marca contiene:
-   - nombre
-   - segmento
-   - modelos
-   - cada modelo contiene:
-       nombre
-       carroceria
-       anioMin
-       motorizaciones
-*/
 
 const MARCAS_FURGONETAS = {
 
@@ -433,5 +416,12 @@ const MARCAS_FURGONETAS = {
       townstar: {
         nombre: "Townstar",
         carroceria: "pequena",
-        a
-```
+        anioMin: 2015,
+        motorizaciones: [
+          { id: "16-d4d", nombre: "1.6 diésel", tipo: "diesel", consumo: 6.0 },
+          { id: "townstar-electric", nombre: "Townstar Electric", tipo: "electrico", consumoKwh: 20.0 },
+        ],
+      },
+    },
+  },
+}
