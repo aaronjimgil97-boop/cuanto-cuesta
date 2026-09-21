@@ -387,8 +387,8 @@ function cargarMapaEspana() {
       return respuesta.json();
     })
     .then((geojson) => {
-      const ancho = 520;
-      const alto = 430;
+      const ancho = 290;
+      const alto = 460;
 
       const svg = d3
         .select("#mapa-espana")
@@ -406,10 +406,10 @@ function cargarMapaEspana() {
       const path = d3.geoPath().projection(proyeccion);
       svg
   .append("rect")
-.attr("x", 170)
-.attr("y", 200)
-.attr("width", 90)
-.attr("height", 50)
+.attr("x", 75)
+.attr("y", 220)
+.attr("width", 70)
+.attr("height", 40)
   .attr("rx", 6)
   .attr("class", "canarias-recuadro");
 
@@ -433,7 +433,7 @@ function cargarMapaEspana() {
 })
   .attr("transform", function (d) {
     if (d.esCanarias) {
-      return "translate(170,-35) scale(0.65)";
+      return "translate(90,20) scale(0.65)";
     }
 
     return null;
