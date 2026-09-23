@@ -626,33 +626,40 @@ img { max-width: 100%; }
   margin: 0 auto;
 }
 #mapa-espana {
-
-  width: 100%;
-
+  width: 92%;
   max-width: 600px;
-
-  margin: 0 auto 20px;
-
-  padding: 14px;
-
+  height: 525px;
+  margin: -120px auto 20px;
+  padding: 0 8px;
   box-sizing: border-box;
-
+  overflow: hidden;
   border: none;
-
   border-radius: 10px;
-
-  background: #cfe5ed;
-
+background:
+  linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 120px,
+    #cfe5ed 120px,
+    #cfe5ed 100%
+  ),
+  linear-gradient(
+    to right,
+    transparent 0,
+    transparent 40px,
+    #cfe5ed 40px,
+    #cfe5ed 100%
+  );
+  
 }
 
 
 
 #mapa-espana svg {
   display: block;
-  width: 92%;
+  width: 100%;
   height: auto;
-    border: 3px solid #7f8f70;
-  border-radius: 10px;
+  margin: 0 auto;
 }
 
 .provincia-mapa {
